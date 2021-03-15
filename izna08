@@ -1,0 +1,18 @@
+Name- Bibi Izna 
+20BCE11021
+
+int getSum(int a[], int n) {
+
+int sum = 0; ; i+)
+
+for(int i = 0 ; i
+
+sum
+
++=
+
+a[i];
+
+return sum;
+
+}
