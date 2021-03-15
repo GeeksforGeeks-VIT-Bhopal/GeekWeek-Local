@@ -1,0 +1,106 @@
+#include <iostream>
+using namespace std;
+
+class bank_account
+{
+   int account_num;
+   char depname[20];
+   float amount;
+   public:
+   void getinfo(){
+       cout<<"enter account no."<<endl;
+       cin>>account_num;
+       cout<<"enter account holder name"<<endl;
+       cin>>depname;  
+       cout<<"enter amount"<<endl;
+       cin>>amount;
+   }
+   void deposit()
+   {
+       int depo; 
+       cout<<"enter amount to deposit"<<endl;
+       cin>>depo;
+       amount=amount+depo;
+       cout<<"the updated/current amount is"<<amount<<endl;
+   }
+   void withdraw(){
+       int with;
+       cout<<"enter amount to withdraw"<<endl;
+       cin>>with;
+       if(amount>1000)
+       {
+           amount=amount-with;
+           cout<<"the updated/current amount is"<<amount<<endl;
+       }   
+       else{
+           cout<<"you are not allowed to withdraw";
+       }
+   }
+   int getaccount_num()
+   {
+          return account_num;
+   }
+};
+
+int main(){
+    int flag=0;
+    bank_account ba[2];
+    for(int i=0;i<2;i++){
+       cout<<"enter depositer info : "<<i+1<<endl;
+       ba[i].getinfo(); 
+    }
+    cout<<"select the below required operations"<<endl;
+    cout<<"enter 1 for deposit"<<endl;
+    cout<<"enter 2 for withdraw"<<endl;
+    int ch;
+    cin>>ch;
+    int a;
+    switch(ch){
+        case 1:
+        cout<<"enter account number"<<endl;
+        cin>>a;
+        for(int i=0;i<2;i++)
+        {
+            if(ba[i].getaccount_num()==a){
+                flag=1;
+                break;
+            }
+            else{
+                flag=0;
+            }
+        }
+        if(flag==0)
+        {
+            cout<<"in valid"<<endl;
+        }
+        else
+        {
+            int i;
+            ba[i].deposit();
+        }
+        break;
+        case 2:
+        cout<<"enter account number"<<endl;
+        cin>>a;
+        for(int i=0;i<2;i++)
+        {
+            if(ba[i].getaccount_num()==a){
+                flag=1;
+                break;
+            }
+            else{
+                flag=0;
+            }
+        }
+        if(flag==0)
+        {
+            cout<<"in valid"<<endl;
+        }
+        else
+        {
+            int i;
+            ba[i].withdraw();
+        }
+        break;
+    }   
+}   
