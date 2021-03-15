@@ -1,0 +1,64 @@
+//Hello World using JavaScript
+<html>
+    <head>
+        <title>GeekWeek Local</title>
+    </head>
+    <body>
+        <p id="demo">Hello World, This is Taha!</p>
+        <p id="demo1">This is JavaScript</p>
+            <script type=text/javascript>
+                document.getElementById("demo").style.fontFamily = "Impact,Charcoal,sans-serif";
+                document.getElementById("demo1").style.fontFamily = "Georgia";
+            </script>        
+    </body>    
+</html>
+
+#Reversing the order of lines. We will use the above text file as input.
+f1 = open("gfg.txt", "w")
+
+with open("gfg1.txt", "r") as gfglocal:
+	data = gfglocal.read()
+
+reverse = data[::-1]
+
+f1.write(reverse)
+
+f1.close()
+
+f2 = open("gfg2.txt", "w")
+
+with open("gfg1.txt", "r") as gfglocal:
+	data = gfglocal.readlines()
+
+reverse1 = data[::-1]
+
+f2.writelines(reverse1)
+
+f2.close()
+
+#Convert a queue to a list
+from queue import Queue
+que=Queue()
+que.put(2)
+que.put(20)
+que.put(1)
+que.put(12)
+print("Initially:")
+print(que.queue)
+l=list(que.queue)
+print("Finally: ")
+print(l)
+
+#Tower of Hanoi
+def TOH(n, source, destination, aux):
+    if n == 1:
+        print
+        "Shift disk 1 from source", source, "to destination", destination
+        return
+    TOH(n - 1, source, aux, destination)
+    print
+    "Shift disk", n, "from source", source, "to destination", destination
+    TOH(n - 1, aux, destination, source)
+
+n = 4
+TOH(n, 'X', 'Y', 'Z')
