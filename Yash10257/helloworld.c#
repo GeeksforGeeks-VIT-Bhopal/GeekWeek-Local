@@ -1,0 +1,8 @@
+using System;
+namespace Helloworld{
+   class geekweek{
+     static void Main(string[] args){
+        Console.WrittenLine("Hello World!")
+     }
+   }
+}
