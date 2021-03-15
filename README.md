@@ -14,7 +14,7 @@ If the daily challenges aren’t quite your speed, there will also be plenty of 
 
 ![](assets/banner2(1).png)
 
-## **Step1:** Goto **[Geek Week: Local](https://github.com/GeeksforGeeks-VIT-Bhopal/GeekWeek-Local)** and click on **Fork** on the top right corner insode the GeekWeek-Local repo
+## **Step1:** Goto **[Geek Week: Local](https://github.com/GeeksforGeeks-VIT-Bhopal/GeekWeek-Local)** and click on **Fork** on the top right corner inside the GeekWeek-Local repo
 
 ![](assets/step1.png)
 
