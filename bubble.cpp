@@ -1,7 +1,7 @@
 #include <iostream> 
 using namespace std; 
 
-void bubbleSort(int a[], int n) 
+void sort(int a[], int n) 
 { 
 	int i, j; 
 	for (i = 0; i < n-1; i++)	 
@@ -29,7 +29,7 @@ int main()
 { 
 	int a[] = {6, 2, 5, 10, 9, 7, 1}; 
 	int n = sizeof(a)/sizeof(a[0]); 
-	bubbleSort(a, n); 
+	sort(a, n); 
 	cout<<"Sorted array: \n"; 
 	printArray(a, n); 
 	return 0; 
