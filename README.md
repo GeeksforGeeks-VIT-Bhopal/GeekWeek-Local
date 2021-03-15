@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# GeekWeek-Local
-=======
 # Geek Week: Local
 ![](assets/banner.png)
 
