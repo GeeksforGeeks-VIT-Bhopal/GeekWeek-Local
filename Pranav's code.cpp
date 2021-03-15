@@ -7,7 +7,7 @@ int main()
 
     for(int x:a){
         for(int i = 0; i<x; i++){
-            cout<<"geeks for geeks"<<endl;
+            cout<<"I love geeks for geeks"<<endl;
         }
     }
 }
