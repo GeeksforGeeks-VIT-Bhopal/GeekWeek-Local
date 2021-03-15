@@ -1,0 +1,35 @@
+#User function Template for python3
+
+def find_multiplication (arr, brr, n, m) :
+    ma = arr[0]
+    mi = brr[0]
+    for i in range(n):
+        if arr[i]>ma:
+            ma = arr[i]
+    for j in range(m):
+        if brr[j]<mi:
+            mi = brr[j]
+    return ma*mi
+    
+
+
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+    
+    
+for _ in range(0,int(input())):
+    n = int(input())
+    arr = list(map(int,input().strip().split()))
+    m = int(input())
+    brr = list(map(int,input().strip().split()))
+    res = find_multiplication(arr, brr, n, m)
+    print(res)
+
+
+
+
+
+
+# } Driver Code Ends
