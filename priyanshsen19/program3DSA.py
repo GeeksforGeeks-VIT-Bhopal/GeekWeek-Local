@@ -8,7 +8,7 @@ def splitArr(arr, n, k):
           
   
 # main 
-arr = [12, 10, 5, 6, 52, 36] 
+arr = [14, 13, 4, 3, 65, 43] 
 n = len(arr) 
 position = 2
   
