@@ -1,0 +1,34 @@
+import java.util.*;
+class Selection_Sort
+{
+    public void main()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the array size - ");
+        int s = sc.nextInt();
+        System.out.println("Enter array elements - ");
+        int arr[] = new int[s];
+        for(int i =0;i<s;i++)
+        {
+            arr[i] = sc.nextInt();
+        }
+        System.out.println("The array after sorting with Selection Sort technique-");
+        for(int i =0;i<s-1;i++)
+        {
+            int small = arr[i];
+            for(int j =i+1;j<s;j++)
+            {
+                if(arr[j]<small)
+                {
+                    int temp = arr[j];
+                    arr[j] = arr[i];
+                    arr[i]=temp;
+                }
+            }
+        }
+        for(int i =0;i<s;i++)
+        {
+            System.out.println(arr[i]);
+        }
+    }
+}
