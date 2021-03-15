@@ -1,4 +1,3 @@
-//Calculate cost of visiting all array elements in increasing order
 #include <bits/stdc++.h> 
 using namespace std; 
 
