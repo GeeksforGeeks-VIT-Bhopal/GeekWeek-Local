@@ -33,5 +33,5 @@ void answer(string s1, string s2, string s)
         }
     }
     cout << "YES" << endl;
-    return;
+    return; 
 }
