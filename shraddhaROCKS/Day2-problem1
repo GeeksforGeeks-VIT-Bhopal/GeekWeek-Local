@@ -1,0 +1,40 @@
+/*
+    Time Complexity: O(N)
+    Space Complexity: O(1),
+
+    Where N is the length of the string.
+*/
+import java.util.HashMap;
+
+public class Solution {
+
+	public static boolean palindromeString(String s) {
+
+		HashMap<Character, Integer> mp = new HashMap<Character, Integer>();
+		for (int i = 0; i < s.length(); i++) {
+
+			if (mp.containsKey(s.charAt(i))) {
+				mp.put(s.charAt(i), mp.get(s.charAt(i)) + 1);
+			}
+
+			else {
+				mp.put(s.charAt(i), 1);
+			}
+
+		}
+
+		int odd = 0;
+		for (int x : mp.values()) {
+			if (x % 2 == 1) {
+				odd++;
+			}
+
+		}
+
+		if (odd == 0 || odd == 1)
+			return true;
+		else
+			return false;
+	}
+
+}
