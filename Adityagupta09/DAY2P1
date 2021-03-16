@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+
+int main() 
+{
+	long long num;
+	cin >> num;
+
+	int evenSum = 0, oddSum = 0;
+
+	while(num > 0)
+	{
+		int last = num % 10;
+		if(last % 2 == 0) 
+		{
+			evenSum = evenSum + last;
+		}
+		else 
+		{
+			oddSum = oddSum + last;
+		}
+		num = num / 10;
+	}
+	cout << evenSum << " " << oddSum;
+	return 0;
+}
