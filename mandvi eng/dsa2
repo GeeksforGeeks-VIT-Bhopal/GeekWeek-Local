@@ -1,0 +1,64 @@
+public class Solution {
+
+    public static void solve(String s, int n, int p) {
+
+        int arr[] = new int[n + 1];
+
+        for (int i = 1; i <= n; i++) {
+
+            arr[i] = (int) (s.charAt(i - 1) - 'a' + 1);
+
+        }
+        if (helper(arr, n, p)) {
+
+            for (int i = 1; i <= n; i++) {
+
+                System.out.print((char) (arr[i] + 'a' - 1));
+
+            }
+        } else {
+            System.out.println("NO");
+        }
+    }
+
+    static boolean helper(int[] arr, int dep, int p) {
+
+        // Base case
+        if (dep == 0) {
+            return false;
+        }
+
+        for (int i = arr[dep] + 1; i <= p; i++) {
+
+            if (dep - 1 >= 1 && arr[dep - 1] == i) {
+                continue;
+            }
+
+            if (dep - 2 >= 1 && arr[dep - 2] == i) {
+                continue;
+            }
+
+            arr[dep] = i;
+
+            return true;
+
+        }
+        if (!helper(arr, dep - 1, p)) {
+
+            return false;
+        }
+        arr[dep] = 1;
+        for (int i = arr[dep]; i <= p; i++) {
+
+            if (dep - 1 >= 1 && arr[dep - 1] == i) {
+                continue;
+            }
+            if (dep - 2 >= 1 && arr[dep - 2] == i) {
+                continue;
+            }
+            arr[dep] = i;
+            return true;
+        }
+        return false;
+    }
+}
