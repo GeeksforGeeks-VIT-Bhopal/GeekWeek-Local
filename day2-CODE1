@@ -1,0 +1,6 @@
+int setAllBitsInRange(int num, int k)
+{
+  
+    int range = (1 << k) - 1;
+    return (num | range);
+}
