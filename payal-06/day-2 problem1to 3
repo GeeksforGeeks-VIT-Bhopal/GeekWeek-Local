@@ -29,5 +29,64 @@ public class Solution {
 
 }
        
+## PROGRAM -2
+public class Solution {
+
+    public static void checkPangram(String s, int n) {
+        int answer = 0;
+
+        int[] freq = new int[255];
+
+        for (int i = 0; i < n; i++) {
+            freq[s.charAt(i)]++;
+        }
+
+        for (int i = 0; i < 26; i++) {
+            if (freq['a' + i] > 0 || freq['A' + i] > 0) {
+                answer++;
+            }
+        }
+
+        System.out.println((answer == 26 ? "YES" : "NO"));
+
+    }
+
+}
+### program-3
+public class Solution {
+
+    public static String getCompressedString(String input) {
+            if (input == null){
+                return null;
+            }
+
+            if (input.length() == 0){
+                return "";
+            }
+
+            int startIndex = 0;
+            int endIndex = 0;
+
+            String compressedString = "";
+
+            while (startIndex < input.length()) {
+                while ((endIndex < input.length()) && (input.charAt(endIndex) == input.charAt(startIndex))) {
+                    endIndex += 1;
+                }
+
+
+                int totalCharCount = endIndex - startIndex;
+                if (totalCharCount != 1) {
+                    compressedString += (input.charAt(startIndex) + "" + totalCharCount);
+                } else {
+                    compressedString += input.charAt(startIndex);
+                }
+
+                startIndex = endIndex;
+            }
+
+            return compressedString;
+    }
+}
 
     
