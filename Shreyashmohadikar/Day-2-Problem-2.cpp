@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include <memory.h>
-
+ 
 int S1[256], S2[256], S[256];
 
 void answer(string s1, string s2, string s)
