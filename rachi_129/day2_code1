@@ -1,0 +1,16 @@
+def removeConsecutiveDuplicates(s):
+    # Please add your code here
+    j=0
+    for i in range(len(s)):
+        if (s[j] != s[i]): 
+            j += 1
+            s[j] = s[i]
+    j += 1
+    s = s[:j] 
+    return s
+
+
+# Main
+s = input().strip()
+s = list(s.rstrip())
+print(*removeConsecutiveDuplicates(s),sep="")
