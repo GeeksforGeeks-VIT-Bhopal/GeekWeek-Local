@@ -1,4 +1,4 @@
-void recur(int i,char a[],string s,map<int,string>m,vector<string>&v)
+void recur(int i,char a[],string s,string m[],vector<string>&v)
 {
     if(i==s.length())
     {
@@ -15,7 +15,7 @@ void recur(int i,char a[],string s,map<int,string>m,vector<string>&v)
     }
 }
 vector<string> combinations(string s){
-	map<int,string>m;
+	string m[10];
     vector<string>v;
     m[2]="abc";
     m[3]="def";
