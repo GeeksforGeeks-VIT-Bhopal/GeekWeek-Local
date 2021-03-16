@@ -1,0 +1,109 @@
+https://www.codingninjas.com/codestudio/problems/palindromic-substrings_630404
+
+
+from sys import stdin
+
+def plnd_check(string):
+    n = len(string)
+
+    start = 0
+    end = (n - 1)
+
+    while start < end:
+        if string[start] != string[end]:
+            return False
+
+        start += 1
+        end -= 1
+
+    return True
+
+
+def plnd_sub_str(string, n):
+    lst_sub_str = []
+    count = 0
+
+    for i in range(n):
+        for j in range((i + 1), (n + 1)):
+            sub_str = string[i: j]
+            lst_sub_str.append(sub_str)
+
+    for sub_str in lst_sub_str:
+        if plnd_check(sub_str):
+            count += 1
+
+    return count
+
+t = int(stdin.readline().strip())
+
+while t > 0:
+    string = str(stdin.readline().strip())
+    print(plnd_sub_str(string, len(string)))
+    t -= 1
+
+--------------------------------------------------------------------------------------
+
+https://www.codingninjas.com/codestudio/problems/remove-consecutive-duplicates_893195
+
+s = input().split()
+def removeConsecutiveDuplicates(s):
+    if len(s) <= 1:
+        return s
+    final = removeConsecutiveDuplicates(s[1:])
+    if s[0] == s[1]:
+        return final
+    else:
+        return s[0]+final
+
+--------------------------------------------------------------------------------------
+
+https://www.codingninjas.com/codestudio/problems/permutation-in-string_985363
+
+def find(str1, str2, n, m):
+
+    for i in range(m - n + 1):
+        sub_string = str2[i: i + n]
+
+        if sub_string == str1:
+            return True
+
+    return False
+
+
+def permutate(has_permutation, str1, str2, ind, n, m):
+
+    if ind == n:
+        if find(str1, str2, n, m) == True:
+            has_permutation[0] = True
+
+        return
+
+    for i in range(ind, len(str1)):
+
+        # Swap str1[ind] with str1[i]
+        strlist = list(str1)
+        strlist[ind], strlist[i] = strlist[i], strlist[ind]
+        str1 = ''.join(strlist)
+
+        permutate(has_permutation, str1, str2, ind + 1, n, m)
+
+        # Backtracking and reverse the swap
+        strlist = list(str1)
+        strlist[ind], strlist[i] = strlist[i], strlist[ind]
+        str1 = ''.join(strlist)
+
+
+def permutationExist(str1, str2, n, m):
+
+    if n > m:
+        return "No"
+
+    # Passing by reference 
+    has_permutation = [False]
+
+    permutate(has_permutation, str1, str2, 0, n, m)
+
+    if has_permutation[0] == True:
+        return "Yes"
+
+    return "No"
