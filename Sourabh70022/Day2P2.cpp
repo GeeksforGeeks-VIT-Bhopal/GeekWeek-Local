@@ -24,4 +24,3 @@ string getCompressedString(string s)
     return answer;
 }
 
-Message #chit-chat
