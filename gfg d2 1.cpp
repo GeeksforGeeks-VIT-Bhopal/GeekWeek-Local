@@ -1,3 +1,4 @@
+// coding ninjas Two substrings
 #include <iostream>
 #include <cstring>
 using namespace std;
