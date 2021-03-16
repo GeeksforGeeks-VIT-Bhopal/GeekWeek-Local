@@ -1,0 +1,35 @@
+### program-3
+public class Solution {
+    
+    public static String getCompressedString(String input) {
+            if (input == null){
+                return null;
+            }
+
+            if (input.length() == 0){
+                return "";
+            }
+
+            int startIndex = 0;
+            int endIndex = 0;
+
+            String compressedString = "";
+
+            while (startIndex < input.length()) {
+                while ((endIndex < input.length()) && (input.charAt(endIndex) == input.charAt(startIndex))) {
+                    endIndex += 1;
+                }
+
+                int totalCharCount = endIndex - startIndex;
+                if (totalCharCount != 1) {
+                    compressedString += (input.charAt(startIndex) + "" + totalCharCount);
+                } else {
+                    compressedString += input.charAt(startIndex);
+                }
+
+                startIndex = endIndex;
+            }
+
+            return compressedString;
+    }
+}
