@@ -1,3 +1,4 @@
+//Remove Consecutive Duplicates
 string removeConsecutiveDuplicates(string s)
 {
     if (s.size() <= 1)
