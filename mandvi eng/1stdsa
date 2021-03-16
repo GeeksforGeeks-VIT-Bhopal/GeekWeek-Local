@@ -1,0 +1,43 @@
+/*
+	
+    Time complexity: O(N)
+    Space complexity: O(1)
+
+    where N is the length of the input String
+
+*/
+
+public class Solution {
+
+    public static String getCompressedString(String s) {
+        int n = s.length();
+        StringBuilder answer = new StringBuilder();
+
+        if (n == 0) {
+            return answer.toString();
+        }
+
+        int currentCharCount = 1;
+        answer.append(s.charAt(0));
+
+        for (int i = 1; i < n; ++i) {
+            if (s.charAt(i) == s.charAt(i - 1)) {
+                ++currentCharCount;
+            } else {
+                if (currentCharCount > 1) {
+                    answer.append(currentCharCount);
+                    currentCharCount = 1;
+                }
+
+                answer.append(s.charAt(i));
+            }
+        }
+
+        if (currentCharCount > 1) {
+            answer.append(currentCharCount);
+        }
+
+        return answer.toString();
+    }
+
+}
