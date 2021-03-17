@@ -1,0 +1,22 @@
+class Result {
+
+    public static int diagonalDifference(List<List<Integer>> arr) //Write your code here
+    {
+      int l = arr.get(0) == null ? 0 : arr.get(0).size();
+      int left =0;
+      int right =0;
+      for(int i=0;i<l;i++)
+      {
+          left+= arr.get(i).get(i);
+      } 
+     int le = l-1;
+     for(int i=0;i<l;i++)
+     {
+         right += arr.get(i).get(le--);
+     }
+     int result = Math.abs(right-left);
+     return result;
+    }
+    
+
+}
