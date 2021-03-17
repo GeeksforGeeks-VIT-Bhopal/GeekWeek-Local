@@ -1,4 +1,6 @@
 //Problem based on classes and objects from hacker rank!!!
+#include<iostream>
+using namespace std;
 class Student{ 
     int age;
     int standard;
