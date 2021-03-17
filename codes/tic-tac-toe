@@ -1,0 +1,68 @@
+import java.util.*;
+class tic_tc_to
+{
+    public static void main(String args[])
+    {
+        Scanner I=new Scanner(System.in);
+        String a[][]= new String[3][3];
+        int n,i,j,k,c=0,y=0;
+        String r[]={"O","X"};
+        System.out.println("WELCOME TO THE GAME OF TIC-TAC-TO\nYOUR INPUT OPTIONS ARE AS FOLLOWS:\n1)TOP-LEFT \t2)TOP-MID\t3)TOP-RIGHT\n4)MID-LEFT\t5)CENTRE  \t6)MID-RIGHT\n7)DOWN-LEFT\t8)DOWN-MID\t9)DOWN-RIGHT\nNOW ENTER THE RELEVENT POSITION NUMBERS ALTERNATIVELY,FIRST TO START IS O AND SECOND GETS X");
+          for(i=0;i<3;i++)
+        {
+            for(j=0;j<3;j++)
+                a[i][j]=" ";
+            System.out.println();
+        } 
+       for(k=0;k<9;k++)
+       {
+         n=I.nextInt();
+         if(k%2==0)
+              System.out.println("PLAYER ONE:");
+         else
+              System.out.println("PLAYER TWO:");
+        if(n%3==0)
+            if(a[n/3-1][2]==" ")
+             a[n/3-1][2]=r[k%2];
+             else
+             { 
+                 System.out.println("THIS SPACE IS ALREADY OCCUPIED KINDLY CHOOSE ANOTHER ONE"); 
+                 k=k-1;
+                 continue;
+                } 
+        else
+            if(a[n/3][n%3-1]==" ")
+             a[n/3][n%3-1]=r[k%2];
+             else
+             { 
+                 System.out.println("THIS SPACE IS ALREADY OCCUPIED KINDLY CHOOSE ANOTHER ONE"); 
+                 k=k-1;
+                 continue;
+                }
+          for(i=0;i<3;i++)
+        {
+            for(j=0;j<3;j++)
+              System.out.print(a[i][j]+"\t");
+            System.out.println();
+        } 
+        for(i=0;i<3;i++)
+          if((a[i][0].equals(a[i][1])&&a[i][0].equals(a[i][2])&&a[i][0]==r[k%2])||(a[0][i].equals(a[1][i])&&a[0][i].equals(a[2][i])&&a[0][i]==r[k%2])||a[0][0].equals(a[1][1])&&a[0][0].equals(a[2][2])&&(a[1][1]==r[k%2])||a[0][2].equals(a[1][1])&&a[0][2].equals(a[2][0])&&(a[1][1]==r[k%2]))
+              if(k%2==0)
+                {
+                      System.out.println("PLAYER ONE WINS!!!!!!!!!!!!!!!!!!!");
+                      c++;
+                      break;
+                }
+              else
+                {
+                      System.out.println("PLAYER TWO WINS!!!!!!!!!!!!!!!!!!!");
+                      c++;
+                      break;
+                } 
+        if(c>0)
+         break;
+     }
+     if(c==0)
+      System.out.println("THE GAME IS TIED");
+   }
+}
