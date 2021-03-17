@@ -1,0 +1,41 @@
+### program-1
+void RotateLeft(vector<int>&v,int n,int d)
+{
+    reverse(v.begin(),v.begin()+d);
+    reverse(v.begin()+d , v.end());
+    reverse(v.begin(),v.end());
+    
+     for(int i = 0 ; i < n ; i++)
+     {
+         cout<<v[i]<<" ";
+      }
+    
+}
+###program-2
+Vector<int> reverseArray(vector<int> a) {
+int j = a.size()-1;
+for(int i=0; i<j; i++,j--)
+{
+    int temp= a[i];
+    a[i]   = a[j];
+    a[j]   = temp;
+}
+return a;
+}
+
+### program-3
+function hourglassSum(arr) {
+  let count = -63;
+
+  for(let i = 0; i <= 3; i++){
+    for(let j = 0; j <= 3; j++){
+      let sum = arr[i][j] + arr[i][j+1] + arr[i][j+2] + arr[i+1][j+1] 
+      + arr[i+2][j] + arr[i+2][j+1] + arr[i+2][j+2]
+
+      if(sum > count){
+        count = sum
+      }
+    }
+  }
+  return count;
+};
