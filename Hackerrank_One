@@ -1,0 +1,11 @@
+public class Solution
+{
+static int simpleArraySum(int[] ar)
+     {
+        int l =ar.length;
+        int sum =0;
+        for(int i =0;i<l;i++)
+        sum +=ar[i];
+        return sum;
+
+    }
