@@ -1,0 +1,17 @@
+using System;
+
+using System.Collections.Generic;
+
+using System.I0; 4 class Solution {
+
+7
+
+static int solveMeFirst (int a, int b)
+
+// Hint: Type return a+b; below
+
+}
+
+static void Main(String[] args) {
+
+int vall = Convert. ToInt32 (Console. ReadLine()); int val2 = Convert.ToInt32 (Console.ReadLine(O); int sum = solveMeFirst (val, val2); }
