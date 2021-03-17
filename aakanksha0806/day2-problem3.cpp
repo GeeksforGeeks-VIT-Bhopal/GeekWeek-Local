@@ -1,5 +1,6 @@
-'''https://www.codingninjas.com/codestudio/problems/amazing-strings_893182'''
+/*https://www.codingninjas.com/codestudio/problems/amazing-strings_8931828*/
 #include <bits/stdc++.h>
+#include <string.h>
 using namespace std;
 void ans(string s, string w, string sw)
 {
