@@ -1,4 +1,3 @@
-1. Generate Parenthesis (Language: Java)
 class Solution {
     public List<String> generateParenthesis(int n) {
     ArrayList<String> result = new ArrayList<String>();
