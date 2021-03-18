@@ -1,4 +1,4 @@
-#difficult
+#medium-level
 
 class Solution:
     def reverseWords(self, s: str) -> str:
