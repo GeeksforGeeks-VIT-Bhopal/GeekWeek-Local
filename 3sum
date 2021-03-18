@@ -1,0 +1,33 @@
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        
+        vector<vector<int>> result;
+        for(int i = 0; i < nums.size() && nums.at(i) <= 0; i++){
+            if(i == 0 || nums.at(i - 1) != nums.at(i))
+                twoSum(result, nums, i);
+        }
+        
+        return result;
+    }
+    
+    void twoSum(vector<vector<int>> &result, vector<int> &nums, int index){
+        int low  = index + 1;
+        int high = nums.size() - 1;
+        
+        while(low < high){
+            int sum = nums.at(index) + nums.at(low) + nums.at(high);
+            
+            if(sum < 0) low++;
+            
+            else if(sum > 0) high--;
+            
+            else if(sum == 0) {
+                result.push_back({nums.at(index), nums.at(low++), nums.at(high--)});
+                while(low < high && nums.at(low) == nums.at(low - 1))
+                    low++;
+            }           
+        }
+    }
+};
