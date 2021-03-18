@@ -15,7 +15,7 @@ void ans(string s, string w, string sw)
   for (i = 0; i<sw.size();i++)
     sw1[sw[i] - 'A']++;
   for (i = 0; i<26;i++)
-    if (s1[i] + w1[i]! = sw1[i])
+    if (s1[i] + w1[i] != sw1[i])
     {
       cout<<"NO"<<endl;
       break;
