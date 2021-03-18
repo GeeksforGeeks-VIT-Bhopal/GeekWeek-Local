@@ -1,0 +1,8 @@
+#include<stdio.h>
+#include<windows.h>
+#include<MMsystem.h>
+using namespace std;
+int main(){
+    PlaySound(TEXT("C:\\music\\song.wav"), NULL, SND_SYNC);
+    return 0;
+}
