@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll=long long int;
+
+ll MOD = 1000000007;
+
+int main() 
+{
+    ios_base::sync_with_stdio(false);
+        cin.tie(0);
+        cout.tie(0);
+    ll n, k;
+    cin>>n>>k;
+    vector<ll> a(n);
+    unordered_map<ll, ll> mp;
+    for(ll i=0; i<n; i++)
+    {
+        cin>>a[i];
+        mp[a[i]]++;
+    }
+    vector<ll> distinct;
+    ll ans = 1;
+    for(auto itr : mp)
+    {
+        distinct.push_back(itr.first);
+        ans = (ans*(itr.second + 1))%MOD; 
+    }
+    ll N = distinct.size();
+    if(N<=k)
+    {
+        cout<<ans<<"\n";
+        return 0;
+    }
+    vector<ll> dp(N, 1);
+    ans = 1;
+    for(ll i=1; i<=k; i++)
+    {
+        ll ansNow = 0;
+        for(ll i=0; i<N; i++)
+        {
+            dp[i] = (dp[i]*mp[distinct[i]])%MOD;
+            ansNow = (ansNow + dp[i])%MOD;
+            }
+        ans = (ans + ansNow)%MOD;
+        for(ll i=0; i<N; i++)
+        {
+            ansNow = (ansNow - dp[i] + MOD)%MOD;
+            dp[i] = ansNow;
+        }
+    }
+    cout<<ans<<"\n";
+	return 0;
+}
