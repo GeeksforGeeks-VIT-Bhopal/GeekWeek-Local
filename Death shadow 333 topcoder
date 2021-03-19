@@ -1,0 +1,511 @@
+1) Floodfill
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+class FloodFill {
+public:
+  vector <int> getCell(vector <int>, vector <int>, long long);
+};
+ 
+const int inf = (int) 5e8;
+ 
+vector <int> FloodFill::getCell(vector <int> X, vector <int> Y, long long A) {
+  int n = (int) X.size();
+  auto Count = [&](int rad, int max_x, int max_y) -> long long {
+    vector<int> xa(n);
+    vector<int> ya(n);
+    vector<int> xb(n);
+    vector<int> yb(n);
+    for (int i = 0; i < n; i++) {
+      xa[i] = X[i] - rad;
+      ya[i] = Y[i] - rad;
+      xb[i] = X[i] + rad + 1;
+      yb[i] = Y[i] + rad + 1;
+    }
+    vector<int> xs;
+    vector<int> ys;
+    for (int i = 0; i < n; i++) {
+      xs.push_back(xa[i]);
+      ys.push_back(ya[i]);
+      xs.push_back(xb[i]);
+      ys.push_back(yb[i]);
+    }
+    xs.push_back(max_x);
+    xs.push_back(max_x - 1);
+    ys.push_back(max_y);
+    sort(xs.begin(), xs.end());
+    xs.resize(unique(xs.begin(), xs.end()) - xs.begin());
+    sort(ys.begin(), ys.end());
+    ys.resize(unique(ys.begin(), ys.end()) - ys.begin());
+    long long ret = 0;
+    for (int i = 0; i < (int) xs.size() - 1; i++) {
+      for (int j = 0; j < (int) ys.size() - 1; j++) {
+        int x1 = xs[i];
+        int y1 = ys[j];
+        int x2 = xs[i + 1];
+        int y2 = ys[j + 1];
+        if (x2 > max_x || (x2 == max_x && y2 > max_y)) {
+          continue;
+        }
+        bool inside = false;
+        for (int k = 0; k < n; k++) {
+          if (x1 >= xa[k] && y1 >= ya[k] && xb[k] >= x2 && yb[k] >= y2) {
+            inside = true;
+            break;
+          }
+        }
+        if (inside) {
+          ret += (long long) (x2 - x1) * (long long) (y2 - y1);
+        }
+      }
+    }
+    return ret - n;
+  };
+  int low = 1;
+  int high = inf;
+  while (low < high) {
+    int mid = (low + high) >> 1;
+    long long cnt = Count(mid, 2 * inf, 2 * inf);
+    if (cnt >= A) {
+      high = mid;
+    } else {
+      low = mid + 1;
+    }
+  }
+  int rad = low;
+  low = -2 * inf;
+  high = 2 * inf;
+  while (low < high) {
+    int mid = low + (high - low) / 2;
+    long long cnt = Count(rad - 1, 2 * inf, 2 * inf);
+    cnt += Count(rad,     mid, 2 * inf);
+    cnt -= Count(rad - 1, mid, 2 * inf);
+    if (cnt >= A) {
+      high = mid;
+    } else {
+      low = mid + 1;
+    }
+  }
+  int x = low;
+  low = -2 * inf;
+  high = 2 * inf;
+  while (low < high) {
+    int mid = low + (high - low) / 2;
+    long long cnt = Count(rad - 1, 2 * inf, 2 * inf);
+    cnt += Count(rad,     x, mid);
+    cnt -= Count(rad - 1, x, mid);
+    if (cnt >= A) {
+      high = mid;
+    } else {
+      low = mid + 1;
+    }
+  }
+  int y = low;
+  return vector<int> {x - 1, y - 1};
+}
+
+2)IslandInALake
+
+#include <bits/stdc++.h>
+using namespace std;
+#define REP(i, n) FOR(i, 0, (n))
+#define FOR(i, a, b) for(int i=(a); i<(b); i++)
+#define LAR(a, b) ((a)=max((a),(b)))
+#define SML(a, b) ((a)=min((a),(b)))
+using ll = long long;
+using ld = long double;
+using vi = vector<int>;
+using vl = vector<ll>;
+using pii = pair<int, int>;
+using vpii = vector<pair<int, int>>;
+template<typename T>
+using pque = priority_queue<T, vector<T>, greater<T>>;
+#define PB push_back
+#define EB emplace_back
+#define MP make_pair
+#define ALL(a) (a).begin(), (a).end()
+#ifdef LOCAL_DEBUG
+#define DEBUG(...) printf(__VA_ARGS__)
+#else
+#define DEBUG(...)
+#endif
+ 
+class IslandInALake {
+public:
+  int h, w;
+  char s[64][64] = {};
+  bool b[64][64] = {};
+  int dy[8]={0,1,1,1,0,-1,-1,-1};
+  int dx[8]={1,1,0,-1,-1,-1,0,1};
+ 
+  void dfa(int i, int j){
+    if(s[i][j] == '#') return;
+    s[i][j] = '#';
+    REP(k, 4){
+      int y = i + dy[k*2];
+      int x = j + dx[k*2];
+      if(y < 0 || h <= y) continue;
+      if(x < 0 || w <= x) continue;
+      dfa(y, x);
+    }
+  }
+ 
+  int dfs(int i, int j){
+    if(s[i][j] == '#') return 0;
+    s[i][j] = '#';
+    int ret = 1;
+    REP(k, 8){
+      int y = i + dy[k];
+      int x = j + dx[k];
+      if(y < 0 || h <= y) continue;
+      if(x < 0 || w <= x) continue;
+      ret += dfs(y, x);
+    }
+    return ret;
+  }
+  
+  int build(vector <string> country) {
+    h = country.size();
+    w = country[0].size();
+    REP(i, h) REP(j, w) s[i][j] = country[i][j];
+    
+    REP(i, h) REP(j, w) if(s[i][j] == '#'){
+      REP(k, 8){
+        int y = i + dy[k];
+        int x = j + dx[k];
+        if(y < 1 || h-1 <= y) continue;
+        if(x < 1 || w-1 <= x) continue;
+        b[y][x] = true;
+      }
+    }
+ 
+    REP(i, h) DEBUG("%s\n", s[i]); DEBUG("========\n");
+    dfa(0, 0);
+    REP(i, h) DEBUG("%s\n", s[i]); DEBUG("========\n");
+    REP(i, h) REP(j, w) if(b[i][j]) s[i][j] = '#';
+    REP(i, h) DEBUG("%s\n", s[i]); DEBUG("========\n");
+    int ans = 0;
+    REP(i, h) REP(j, w) {
+      int ret = dfs(i, j);
+      if(ret) DEBUG("%d %d => %d\n", i, j, ret);
+      LAR(ans, ret);
+    }
+    return ans;
+  }
+} test;
+ 
+#ifdef LOCAL_DEBUG
+int main(){
+  int n; cin >> n;
+  vector<string> v;
+  REP(i, n){
+    string s; cin >> s;
+    v.EB(s);
+  }
+  printf("%d\n", test.build(v));
+}
+#endif
+
+3)Fakereportdata
+
+#include <bits/stdc++.h>
+using namespace std;
+using vi = vector<int>;
+using ll = long long;
+using ld = long double;
+using pii = pair<int, int>;
+ 
+#define rep(i,a,b) for(auto i = (a); i < (b); ++i)
+#define trav(a,x) for(auto& a: x)
+#define all(a) begin(a),end(a)
+#define sz(a) (int)size(a)
+#define PB push_back
+#define cauto const auto
+ 
+struct edge{int to;};
+using graph = vector<vector<edge>>;
+ 
+constexpr auto dbg = true;
+ 
+struct FakeReportData {
+  vector<int> generate(int n, int d) {
+    vi res(n);
+    rep(i, 0, n) {
+      rep(j, 0, d) {
+        auto dig = (i + j + 1) % 10;
+        res[i] *= 10;
+        res[i] += dig;
+      }
+    }
+    return res;
+  }
+};
+
+4)divideloot
+
+#include <bits/stdc++.h>
+ 
+using namespace std;
+int Count[1005];
+ 
+class DivideLoot {
+  public:
+  string verify(int N, vector <int> loot) {
+    int sum = 0;
+    for (int i = 0; i < (int) loot.size(); i++) {
+      sum += loot[i];
+    }
+    if (sum % N != 0) {
+      return "impossible";
+    }
+    sum /= N;
+    vector <int> newLoot;
+    for (int i = 0; i < (int) loot.size(); i++) {
+      if (loot[i] == sum) {
+        N--;
+      }
+      else {
+        newLoot.push_back(loot[i]);
+      }
+    }
+    if (2 * N != (int) newLoot.size()) {
+      return "impossible";
+    }
+    for (int i = 0; i < (int) newLoot.size(); i++) {
+      Count[newLoot[i]]++;
+    }
+    for (int i = 1; i <= 1000; i++) {
+      while (Count[i] > 0) {
+        Count[i]--;
+        if (Count[sum - i] > 0) {
+          Count[sum - i]--;
+        }
+        else {
+          return "impossible";
+        }
+      }
+    }
+    return "possible";
+  }
+};
+
+5)CrismasTwins
+
+import java.util.Arrays;
+ 
+public class ChristmasTwins {
+    private int height;
+    private int width;
+    private int n;
+    private int cnt;
+    private int[] have;
+    private int[][] ind;
+    private long[] res;
+    int[][] adj;
+    int resCnt;
+    long mask;
+ 
+    public long countCuts(String[] bitmap) {
+        height = bitmap.length;
+        width = bitmap[0].length();
+        n = height * width;
+        int[] ar = new int[n];
+        int[] ac = new int[n];
+        for (int i = 0; i < n; ++i) {
+            ar[i] = i / width;
+            ac[i] = i % width;
+        }
+        cnt = 0;
+        for (int r = 0; r < height; ++r) {
+            for (int c = 0; c < width; ++c) {
+                if (bitmap[r].charAt(c) == '#') {
+                    ++cnt;
+                }
+            }
+        }
+        res = new long[10 << 20];
+        resCnt = 0;
+        have = new int[cnt];
+        adj = new int[cnt][];
+        cnt = 0;
+        ind = new int[height][width];
+        for (int[] x : ind) Arrays.fill(x, -1);
+        for (int r = 0; r < height; ++r) {
+            for (int c = 0; c < width; ++c) {
+                if (bitmap[r].charAt(c) == '#') {
+                    ind[r][c] = cnt;
+                    have[cnt] = r * width + c;
+                    ++cnt;
+                }
+            }
+        }
+        for (int r = 0; r < height; ++r) {
+            for (int c = 0; c < width; ++c) {
+                if (bitmap[r].charAt(c) == '#') {
+                    int nadj = 0;
+                    for (int rr = r - 1; rr <= r + 1; ++rr) {
+                        for (int cc = c - 1; cc <= c + 1; ++cc) {
+                            if (Math.abs(rr - r) + Math.abs(cc - c) == 1 && rr >= 0 && rr < height && cc >= 0 && cc < width && ind[rr][cc] >= 0) {
+                                ++nadj;
+                            }
+                        }
+                    }
+                    adj[ind[r][c]] = new int[nadj];
+                    nadj = 0;
+                    for (int rr = r - 1; rr <= r + 1; ++rr) {
+                        for (int cc = c - 1; cc <= c + 1; ++cc) {
+                            if (Math.abs(rr - r) + Math.abs(cc - c) == 1 && rr >= 0 && rr < height && cc >= 0 && cc < width && ind[rr][cc] >= 0) {
+                                adj[ind[r][c]][nadj++] = ind[rr][cc];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (cnt != have.length) throw new RuntimeException();
+        int big = Math.max(height, width) * 2;
+        int[] next = new int[n];
+        int[] prev = new int[n];
+        long[] first = new long[n];
+        long[] second = new long[n];
+        boolean[] mark = new boolean[n];
+        long guaranteedFirst = 0;
+        long guaranteedSecond = 0;
+        long ways = 0;
+        for (int flips = 0; flips < 2; ++flips) {
+            for (int rotations = 0; rotations < 4; ++rotations) {
+                for (int dr = -big; dr <= big; ++dr) {
+                    for (int dc = -big; dc <= big; ++dc) {
+                        Arrays.fill(next, -1);
+                        Arrays.fill(prev, -1);
+                        for (int r = 0; r < height; ++r) {
+                            for (int c = 0; c < width; ++c) {
+                                if (bitmap[r].charAt(c) == '#') {
+                                    int nr = ar[r * width + c] + dr;
+                                    int nc = ac[r * width + c] + dc;
+                                    if (nr >= 0 && nr < height && nc >= 0 && nc < width && bitmap[nr].charAt(nc) == '#') {
+                                        next[ind[r][c]] = ind[nr][nc];
+                                        prev[ind[nr][nc]] = ind[r][c];
+                                    }
+                                }
+                            }
+                        }
+                        boolean ok = true;
+                        guaranteedFirst = 0;
+                        guaranteedSecond = 0;
+                        int options = 0;
+                        Arrays.fill(mark, false);
+                        for (int i = 0; i < cnt; ++i)
+                            if (prev[i] < 0) {
+                                int len = 0;
+                                int j = i;
+                                while (j >= 0) {
+                                    mark[j] = true;
+                                    if (len % 2 == 0) {
+                                        guaranteedFirst |= 1L << j;
+                                    } else {
+                                        guaranteedSecond |= 1L << j;
+                                    }
+                                    ++len;
+                                    j = next[j];
+                                }
+                                if (len % 2 != 0) {
+                                    ok = false;
+                                    break;
+                                }
+                            }
+                        if (!ok) continue;
+                        for (int i = 0; i < cnt; ++i)
+                            if (!mark[i]) {
+                                int len = 0;
+                                int j = i;
+                                long firstOption = 0;
+                                long secondOption = 0;
+                                do {
+                                    mark[j] = true;
+                                    if (len % 2 == 0) {
+                                        firstOption |= 1L << j;
+                                    } else {
+                                        secondOption |= 1L << j;
+                                    }
+                                    ++len;
+                                    j = next[j];
+                                } while (j != i);
+                                if (len % 2 != 0) {
+                                    ok = false;
+                                    break;
+                                }
+                                first[options] = firstOption;
+                                second[options] = secondOption;
+                                ++options;
+                            }
+                        if (!ok) continue;
+                        explore(guaranteedFirst, guaranteedSecond, options, first, second);
+                    }
+                }
+                rotate(ar, ac);
+            }
+            flip(ar, ac);
+        }
+        Arrays.sort(res, 0, resCnt);
+        int answer = 0;
+        for (int i = 0; i < resCnt; ++i)
+            if (i == 0 || res[i] != res[i - 1]) {
+                ++answer;
+            }
+        return answer;
+    }
+ 
+    private void explore(long guaranteedFirst, long guaranteedSecond, int options, long[] firstO, long[] secondO) {
+        for (int mask = 0; mask < (1 << options); ++mask) {
+            long first = guaranteedFirst;
+            long second = guaranteedSecond;
+            for (int i = 0; i < options; ++i) {
+                if ((mask & (1 << i)) != 0) {
+                    first |= firstO[i];
+                    second |= secondO[i];
+                } else {
+                    second |= firstO[i];
+                    first |= secondO[i];
+                }
+            }
+            if (connected(first) && connected(second)) {
+                res[resCnt++] = Math.min(first, second);
+            }
+        }
+    }
+ 
+    private boolean connected(long mask) {
+        this.mask = mask;
+        if (mask == 0) throw new RuntimeException();
+        int root = Long.numberOfTrailingZeros(mask);
+        dfs(root);
+        return this.mask == 0;
+    }
+ 
+    private void dfs(int at) {
+        mask ^= 1L << at;
+        for (int x : adj[at])
+            if ((mask & (1L << x)) != 0) {
+                dfs(x);
+            }
+    }
+ 
+    private void rotate(int[] r, int[] c) {
+        for (int i = 0; i < r.length; ++i) {
+            int t = r[i];
+            r[i] = -c[i];
+            c[i] = t;
+        }
+    }
+ 
+    private void flip(int[] r, int[] c) {
+        for (int i = 0; i < r.length; ++i) {
+            int t = r[i];
+            r[i] = c[i];
+            c[i] = t;
+        }
+    }
+ 
+}
