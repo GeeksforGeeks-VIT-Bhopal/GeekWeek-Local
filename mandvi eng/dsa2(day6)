@@ -1,0 +1,44 @@
+// Returns common element in all rows of mat[M][N]. If there is no
+// common element, then -1 is returned
+int findCommonEleInRows(int **mat, int M, int N)
+{
+    if (M == 1) {
+        int result = INT_MAX;
+        for (int i = 0; i < N; i++) {
+            if (mat[0][i] < result) {
+                result = mat[0][i];
+            }
+        }
+        return result;
+    }
+
+    unordered_map<int, int> mp;
+
+
+    for (int i = 0; i < M - 1; i++)
+    {
+        unordered_map<int, int> temp;
+        for (int j = 0; j < N; j++)
+        {
+            if (temp[mat[i][j]] == 0) {
+                mp[mat[i][j]]++;
+                temp[mat[i][j]] = 1;
+            }
+        }
+    }
+
+    int result = INT_MAX;
+    for (int i = 0; i < N; i++) {
+        if (mp[mat[M - 1][i]] == M - 1 && mat[M - 1][i] < result) {
+            result = mat[M - 1][i];
+        }
+    }
+
+    if (result == INT_MAX) {
+        return -1;
+    }
+    else {
+        return result;
+    }
+
+}
