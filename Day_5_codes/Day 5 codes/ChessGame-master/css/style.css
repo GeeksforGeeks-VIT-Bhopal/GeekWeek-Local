@@ -1,0 +1,220 @@
+
+.chessboard {
+    margin: auto;
+    width: 40rem;
+    height: 40rem;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: -1;
+}
+
+.chessboard__row {
+    display: flex;
+    width: 100%;
+}
+
+.chessboard__row__item {
+    width: 10%;
+    flex-flow: column;
+    position: relative;
+}
+
+.row--characters {
+    position: relative;
+}
+
+.row--characters > span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-family: "Berlin Sans FB";
+}
+
+.row--chess-piece {
+    font-size: 3em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+html {
+    --border: #037934;
+    --dark_box: #339966;
+    --light_box: #99cc99;
+
+    --font-type: "icomoon2";
+    --dark-piece-color: #000;
+    --light-piece-color: #fff;
+
+    --theme1-border-color: #037934;
+    --theme1-darkbox-color: #339966;
+    --theme1-lightbox-color: #99cc99;
+
+    --theme2-border-color: #006699;
+    --theme2-darkbox-color: #6699cc;
+    --theme2-lightbox-color: #99CCFF;
+
+    --theme3-border-color: #CC8227;
+    --theme3-darkbox-color: #FFA331;
+    --theme3-lightbox-color: #FFC57D;
+
+    --theme4-border-color: #49227F;
+    --theme4-darkbox-color: #9245FF;
+    --theme4-lightbox-color: #BF91FF;
+
+    --theme5-border-color: #7F3C50;
+    --theme5-darkbox-color: #FF78A0;
+    --theme5-lightbox-color: #FFB1C8;
+
+}
+
+.chess-piece--light {
+    color: var(--light-piece-color);
+}
+
+.chess-piece--dark {
+    color: var(--dark-piece-color);
+}
+
+.theme-picker {
+    float: left;
+    width: 150px;
+    height: 50px;
+    left:-150px;
+    color: #fff;
+    text-align: center;
+    font-family: "Berlin Sans FB";
+    cursor: default;
+    position: relative;
+    transition: left 1s cubic-bezier(.16, 1.89, .3, 1.2);
+}
+
+.theme-picker.move {
+    left: 5%;
+}
+
+.theme-picker__btn:hover ~ .theme-picker__list {
+    display: block;
+}
+
+.theme-picker__list:hover {
+    display: block;
+}
+
+.themes-list {
+    z-index: 5;
+}
+
+.theme-picker__btn {
+    text-align: center;
+    line-height: 1.5rem;
+    font-size: 4em;
+    background-color: #261849;
+    display: block;
+    height: 50px;
+    width: 100%;
+}
+
+.theme-picker__btn__tag {
+    font-size: 0.5em;
+}
+
+.theme-picker__list__colors {
+    font-size: 0;
+    position: relative;
+    width: 150px;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.theme__color {
+    width: 33.3%;
+    height: 50px;
+    display: inline-block;
+}
+
+.theme-picker__list {
+    display: none;
+    border-top: 0;
+    position: absolute;
+}
+
+.theme-picker__list__colors:hover {
+    border: 2px solid #f4ffe1;
+    transition: border 0.3s ease-in;
+}
+
+.theme_color_1.color--border {
+    background-color: var(--theme1-border-color);
+}
+
+.theme_color_1.color--dark-box {
+    background: var(--theme1-darkbox-color);
+}
+
+.theme_color_1.color--light-box {
+    background: var(--theme1-lightbox-color);
+}
+
+.theme_color_2.color--border {
+    background-color: var(--theme2-border-color);
+}
+
+.theme_color_2.color--dark-box {
+    background: var(--theme2-darkbox-color);
+}
+
+.theme_color_2.color--light-box {
+    background: var(--theme2-lightbox-color);
+}
+
+.theme_color_3.color--border {
+    background-color: var(--theme3-border-color);
+}
+
+.theme_color_3.color--dark-box {
+    background: var(--theme3-darkbox-color);
+}
+
+.theme_color_3.color--light-box {
+    background: var(--theme3-lightbox-color);
+}
+
+.theme_color_4.color--border {
+    background-color: var(--theme4-border-color);
+}
+
+.theme_color_4.color--dark-box {
+    background: var(--theme4-darkbox-color);
+}
+
+.theme_color_4.color--light-box {
+    background: var(--theme4-lightbox-color);
+}
+
+.theme_color_5.color--border {
+    background-color: var(--theme5-border-color);
+}
+
+.theme_color_5.color--dark-box {
+    background: var(--theme5-darkbox-color);
+}
+
+.theme_color_5.color--light-box {
+    background: var(--theme5-lightbox-color);
+}
+
+.row--odd .chessboard__row__item:nth-child(even), .row--even .chessboard__row__item:nth-child(odd) {
+    background: var(--light_box);
+}
+
+.row--odd .chessboard__row__item:nth-child(odd), .row--even .chessboard__row__item:nth-child(even) {
+    background-color: var(--dark_box);
+}
+
+.chessboard .chessboard__row .row--characters {
+    background-color: var(--border);
+}
