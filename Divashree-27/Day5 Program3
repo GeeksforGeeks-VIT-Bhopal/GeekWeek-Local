@@ -1,36 +1,40 @@
-class Solution {
-    public double findMedianSortedArrays(int[] A, int[] B) {
-        int m = A.length;
-        int n = B.length;
-        if (m > n) { // to ensure m<=n
-            int[] temp = A; A = B; B = temp;
-            int tmp = m; m = n; n = tmp;
-        }
-        int iMin = 0, iMax = m, halfLen = (m + n + 1) / 2;
-        while (iMin <= iMax) {
-            int i = (iMin + iMax) / 2;
-            int j = halfLen - i;
-            if (i < iMax && B[j-1] > A[i]){
-                iMin = i + 1; // i is too small
-            }
-            else if (i > iMin && A[i-1] > B[j]) {
-                iMax = i - 1; // i is too big
-            }
-            else { // i is perfect
-                int maxLeft = 0;
-                if (i == 0) { maxLeft = B[j-1]; }
-                else if (j == 0) { maxLeft = A[i-1]; }
-                else { maxLeft = Math.max(A[i-1], B[j-1]); }
-                if ( (m + n) % 2 == 1 ) { return maxLeft; }
+int leastShots(String[] damageChart, int[] bossHealth) {
+  priorityQueue pq;
 
-                int minRight = 0;
-                if (i == m) { minRight = B[j]; }
-                else if (j == n) { minRight = A[i]; }
-                else { minRight = Math.min(B[j], A[i]); }
+  pq.push(node(0, 0));
 
-                return (maxLeft + minRight) / 2.0;
-            }
+  while (pq.empty() == false) {
+    node top = pq.top();
+    pq.pop();
+
+    // Make sure we don’t visit the same configuration twice
+    if (visited[top.weapons]) continue;
+    visited[top.weapons] = true;
+
+    // A quick trick to check if we have all the weapons, meaning we defeated all the bosses.
+    // We use the fact that (2^numWeapons - 1) will have all the numWeapons bits set to 1.
+    if (top.weapons == (1 << numWeapons) - 1)
+      return top.shots;
+
+    for (int i = 0; i < damageChart.length; i++) {
+      // Check if we’ve already visited this boss, then don’t bother trying him again
+      if ((top.weapons >> i) & 1) continue;
+
+      // Now figure out what the best amount of time that we can destroy this boss is, given the weapons we have.
+      // We initialize this value to the boss’s health, as that is our default (with our KiloBuster).
+      int best = bossHealth[i];
+      for (int j = 0; j < damageChart.length; j++) {
+        if (i == j) continue;
+        if (((top.weapons >> j) & 1) && damageChart[j][i] != ‘0’) {
+          // We have this weapon, so try using it to defeat this boss
+          int shotsNeeded = bossHealth[i] / (damageChart[j][i] - ‘0’);
+          if (bossHealth[i] % (damageChart[j][i] - ‘0’) != 0) shotsNeeded++;
+          best = min(best, shotsNeeded);
         }
-        return 0.0;
+      }
+
+      // Add the new node to be searched, showing that we defeated boss i, and we used ‘best’ shots to defeat him.
+      pq.add(node(top.weapons | (1 << i), top.shots + best));
     }
+  }
 }
