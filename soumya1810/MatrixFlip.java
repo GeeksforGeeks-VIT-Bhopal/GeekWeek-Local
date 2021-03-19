@@ -1,9 +1,7 @@
 package com.samuelale.practice;
 import java.util.Scanner;
 
-/**
- * https://www.hackerrank.com/challenges/flipping-the-matrix
- */
+
 public class MatrixFlip {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
