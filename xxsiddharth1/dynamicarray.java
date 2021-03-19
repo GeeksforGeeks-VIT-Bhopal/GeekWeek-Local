@@ -5,9 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-/**
- * https://www.hackerrank.com/challenges/dynamic-array
- */
+
 public class DynamicArray {
 
     public static void main(String[] args) {
