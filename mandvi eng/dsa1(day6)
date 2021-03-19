@@ -1,0 +1,35 @@
+/*
+	Time Complexity: O(N^2)
+	Space complexity: O(N)
+	
+	where N is the length of array
+*/
+
+public class Solution {
+
+	public static String removeVowels(String inputString) {
+		char[] inputStringArray = inputString.toCharArray();
+		int len = inputStringArray.length;
+		
+		for(int i=0;i<len;i++){
+			char curr = inputStringArray[i]; 
+			int j = i;
+			
+		if(curr == 'a' || curr =='e' || curr =='i' || curr=='o' || curr =='u' || curr == 'A' || curr =='E' || curr =='I' || curr=='O' || curr =='U'){
+				
+				while(j<len-1){
+						inputStringArray[j]=inputStringArray[j+1];
+						j++;
+					}
+				
+				len--;
+				i--;
+			}
+		}
+
+			StringBuilder result = new StringBuilder();
+		for(int i=0;i<len;i++)
+			result.append(inputStringArray[i]);
+		return result.toString();
+	}
+}
