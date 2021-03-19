@@ -1,23 +1,16 @@
-public String longestPalindrome(String s) {
-    if (s == null || s.length() < 1) return "";
-    int start = 0, end = 0;
-    for (int i = 0; i < s.length(); i++) {
-        int len1 = expandAroundCenter(s, i, i);
-        int len2 = expandAroundCenter(s, i, i + 1);
-        int len = Math.max(len1, len2);
-        if (len > end - start) {
-            start = i - (len - 1) / 2;
-            end = i + len / 2;
-        }
-    }
-    return s.substring(start, end + 1);
-}
+dfs(node start) {
+  stack < node > s;
+  s.push(start);
+  while (s.empty() == false) {
+    top = s.top();
+    s.pop();
 
-private int expandAroundCenter(String s, int left, int right) {
-    int L = left, R = right;
-    while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {
-        L--;
-        R++;
+    if (top is not marked as visited) {
+      check
+      for termination condition(have we reached the node we want to ? )
+
+      mark top as visited;
+      add all of top’ s neighbors to the stack.
     }
-    return R - L - 1;
+  }
 }
