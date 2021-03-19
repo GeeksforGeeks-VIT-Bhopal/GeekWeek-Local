@@ -1,0 +1,30 @@
+#YOUTUBE BOT
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+import time
+
+doraemon = webdriver.Chrome(ChromeDriverManager().install())
+
+doraemon.get('https://youtube.com')
+
+searchBar = doraemon.find_element_by_xpath('/html/body/ytd-app/div/div/ytd-masthead/div[3]/div[2]/ytd-searchbox/form/div/div[1]/input')
+searchBar.click()
+searchBar.send_keys('Mesmerizing Tabla')
+
+searchButton = doraemon.find_element_by_xpath('/html/body/ytd-app/div/div/ytd-masthead/div[3]/div[2]/ytd-searchbox/form/button')
+searchButton.click()
+
+time.sleep(4)
+
+gfg = doraemon.find_element_by_xpath('/html/body/ytd-app/div/ytd-page-manager/ytd-search/div[1]/ytd-two-column-search-results-renderer/div/ytd-section-list-renderer/div[2]/ytd-item-section-renderer/div[3]/ytd-channel-renderer/div')
+gfg.click()
+
+time.sleep(2)
+
+vid = doraemon.find_element_by_xpath('/html/body/ytd-app/div/ytd-page-manager/ytd-browse[2]/div[3]/ytd-c4-tabbed-header-renderer/app-header-layout/div/app-header/div[2]/app-toolbar/div/div/paper-tabs/div/div/paper-tab[2]/div')
+vid.click()
+
+time.sleep(2)
+
+vid1=doraemon.find_element_by_xpath('/html/body/ytd-app/div/ytd-page-manager/ytd-browse[2]/ytd-two-column-browse-results-renderer/div[1]/ytd-section-list-renderer/div[2]/ytd-item-section-renderer/div[3]/ytd-grid-renderer/div[1]/ytd-grid-video-renderer/div[1]/ytd-thumbnail/a/yt-img-shadow/img')
+vid1.click()
