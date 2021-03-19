@@ -1,0 +1,38 @@
+#include<string>
+
+bool isOneAway(string A, string B) {
+
+	int lenA = A.size(), lenB = B.size();
+
+	// If the difference between the string lengths is more than one, we can never con
+	// convert string A into string B by doing only one operation.
+	if (abs(lenA - lenB) > 1) {
+		return false;
+	}
+
+	// We will only iterate uptill the length of the shorter string.
+	int min_len = min(lenA, lenB); 
+
+	for (int i = 0; i < min_len; i++) {
+
+		if (A[i] != B[i]) {
+
+			bool validReplace = A.substr(i + 1) == B.substr(i + 1); 
+			// If we replace the character.
+			
+			bool validInsert = A.substr(i)   == B.substr(i + 1);   
+			// If we insert a character at this index.
+
+			bool validDelete = A.substr(i + 1) == B.substr(i);	   
+			// if we delete the character at this index.
+
+			// If after performing any of these operations, the remaining strings are equal,
+			// it means that it is possible for us to convert string A into string B.
+			return (validReplace || validInsert || validDelete);
+		}
+	}
+
+	// Since there is no mismatch and the difference between the
+	// string lengths is not more than 1, so we can return true.
+	return true;
+}

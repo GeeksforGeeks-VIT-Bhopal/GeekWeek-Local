@@ -1,0 +1,16 @@
+import Data.List
+main :: IO ()
+main = getContents >>= print. parse
+parse :: String -> Int
+parse input =
+  case lines input of
+    [a, b] -> validate (a, b)
+    _      -> error "there are not two lines"
+validate :: (String, String) -> Int
+validate (aa, bb)
+  | length aa < 1 || length aa > 10000 = error "length of a is out of range"
+  | length bb < 1 || length bb > 10000 = error "length of b is out of range"
+  | otherwise = foldr (\(p, q) acc -> abs(p-q) + acc) 0 $ zip a b
+    where
+      a = map (length). group. sort $ aa ++ ['a'..'z']
+      b = map (length). group. sort $ bb ++ ['a'..'z']
