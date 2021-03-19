@@ -1,0 +1,132 @@
+/*
+  Time Complexity : O(N*M)
+  Space Complexity : O(N*M)
+
+  where N and M are length of string a and b respectively
+*/
+
+#include <string>
+#include <algorithm>
+
+// Function for finding two numbers represented as strings
+string add(string a, string b)
+{
+    // Checking whether string a is larger than string b
+    if (a.length() > b.length())
+    {
+        swap(a, b);
+    }
+
+    // Initializing result string
+    string answer = "";
+
+    // Calculating length of the two strings
+    int l1 = a.length(), l2 = b.length();
+
+    // Reversing the two strings
+    reverse(a.begin(), a.end());
+    reverse(b.begin(), b.end());
+
+    // Using elementary addition to add digit by digit
+    int carry = 0;
+    for (int i = 0; i < l1; i++)
+    {
+        // Computing sum of  digits
+        int sum = ((a[i] - '0') + (b[i] - '0') + carry);
+
+        // Adding sum to answer
+        answer += (sum % 10 + '0');
+
+        // Calculating carry for next set of digits
+        carry = sum / 10;
+    }
+
+    // Adding the digits not added above
+    for (int i = l1; i < l2; i++)
+    {
+        // Calculating sum of digit and carry
+        int sum = ((b[i] - '0') + carry);
+
+        // Adding sum to answer
+        answer += (sum % 10 + '0');
+
+        // Carry addition
+        carry = sum / 10;
+    }
+
+    // Add carry if it is present
+    if (carry)
+    {
+        answer += (carry + '0');
+    }
+
+    // Reversing our answer
+    reverse(answer.begin(), answer.end());
+
+    return answer;
+}
+
+// Function to multiply string and a digit
+string multiplyWithDigit(string a, int b)
+{
+
+    // Initializing carry and answer
+    int carry = 0;
+    string answer;
+
+    // Iterating digit by digit and multiplying
+    for (int i = a.length() - 1; i >= 0; i--)
+    {
+
+        // Calculating result and adding to answer
+        int p = (a[i] - '0') * b + carry;
+
+        answer += (p % 10 + '0');
+
+        // Updating carry
+        carry = p / 10;
+    }
+
+    // Adding final carry if it exists
+    if (carry)
+    {
+        answer += (carry + '0');
+    }
+
+    // Reversing final answer and returning it
+    reverse(answer.begin(), answer.end());
+
+    return answer;
+}
+
+string multiplyStrings(string a, string b)
+{
+
+    // Finding the rightmost digit of b and multiplying with a
+    int p = b[b.length() - 1] - '0';
+
+    int q = a[a.length() - 1] - '0';
+
+    // Check if 2nd number is Zero
+    if ((p == 0 && b.length() == 1) || (q == 0 && a.length() == 1))
+    {
+        return "0";
+    }
+    string answer = multiplyWithDigit(a, p);
+
+    // Checking if it is the last digit
+    if (b.length() > 1)
+    {
+
+        // Multiplying recursively
+        string l = multiplyStrings(a, b.substr(0, b.length() - 1));
+        // Multiplying by 10
+        l += "0";
+
+        // Adding both the results
+        answer = add(answer, l);
+    }
+
+    //returning result
+    return answer;
+}
