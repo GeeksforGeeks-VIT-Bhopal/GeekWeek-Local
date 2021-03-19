@@ -1,0 +1,168 @@
+ABBA.JAVA
+package com.samuelale.practice;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class ABBA {
+
+    private static final String FAIL = "Impossible";
+    private static final String PASS = "Possible";
+
+//    private static String canObtain(String initial, String target) {
+//        if(initial.equals(target)) return PASS;
+//        else if(initial.length() == target.length()) return FAIL;
+//
+//        if(canObtain(initial+"A", target).equals(PASS)) return PASS;
+//        if(canObtain(reverse(initial) + "B", target).equals(PASS)) return PASS;
+//
+//        return FAIL;
+//    }
+
+    private static String canObtain(String initial, String target) {
+        int len = target.length();
+        Set<String> temp = new HashSet<>();
+        temp.add(target);
+
+        while(initial.length() != len) {
+            Set<String> nTemp = new HashSet<>();
+            for(String t : temp) {
+                if(t.endsWith("A")) nTemp.add(t.substring(0,t.length()-1));
+                else if(t.endsWith("B")) nTemp.add(reverse(t.substring(0,t.length()-1)));
+            }
+            len--;
+
+            temp.clear();
+            temp.addAll(nTemp);
+        }
+
+        if(temp.contains(initial)) return PASS;
+        else return FAIL;
+    }
+
+    private static String reverse(String initial) {
+        int len = initial.length();
+        char[] arr = initial.toCharArray();
+        for(int i=0; i<len/2; i++) {
+            char temp = arr[i];
+            arr[i] = arr[len-i-1];
+            arr[len-i-1] = temp;
+        }
+        return String.valueOf(arr);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Test1: " + canObtain("AB","ABB"));
+        System.out.println("Test2: " + canObtain("BBAB", "ABABABABB"));
+        System.out.println("Test3: " + canObtain("BBBBABABBBBBBA", "BBBBABABBABBBBBBABABBBBBBBBABAABBBAA"));
+        System.out.println("Test4: " + canObtain("A","BB"));
+        System.out.println("Test5: " + canObtain("B","BBBBB"));
+        System.out.println("Test6: " + canObtain("BA","ABB"));
+    }
+}
+
+aboardgame.java
+public class ABoardGame {
+    private static final String ALICE = "Alice";
+    private static final String BOB = "Bob";
+    private static final String DRAW = "Draw";
+
+    public String whoWins(String[] board) {
+        int bLen = board.length-1;
+        int region = bLen/2;
+
+        while(region >= 0) {
+            int bCount = 0;
+            int aCount = 0;
+            // top row, left to right
+            for(int i=region; i<bLen-region; i++) {
+                if(board[region].charAt(i) == 'A') aCount++;
+                else if(board[region].charAt(i) == 'B') bCount++;
+            }
+            // right column, top to bottom
+            for(int i=region; i<bLen-region; i++) {
+                if(board[i].charAt(bLen-region) == 'A') aCount++;
+                else if(board[i].charAt(bLen-region) == 'B') bCount++;
+            }
+            // bottom row, right to left
+            for(int i=bLen-region; i>region; i--) {
+                if(board[bLen-region].charAt(i) == 'A') aCount++;
+                else if(board[bLen-region].charAt(i) == 'B') bCount++;
+            }
+            // left column, bottom to top
+            for(int i=bLen-region; i>region; i--) {
+                if(board[i].charAt(region) == 'A') aCount++;
+                else if(board[i].charAt(region) == 'B') bCount++;
+                System.out.println(Runtime.getRuntime().totalMemory());
+            }
+
+            if(aCount > bCount) return ALICE;
+            else if(aCount < bCount) return BOB;
+            else region--;
+                System.out.println(Runtime.getRuntime().totalMemory());
+        }
+                System.out.println(Runtime.getRuntime().freeMemory());
+
+        return DRAW;
+    }
+
+
+    public static void main(String[] args) {
+        String[] board = {
+                "BBB..BAB...B.B",
+                ".AAAAAAAAAAAA.",
+                "AA.AA.AB..A.AB",
+                "..........B.AB",
+                ".A..BBAB.A.BAB",
+                ".AB.B.......A.",
+                ".A..A.AB.A..AB",
+                ".ABAA.BA...BA.",
+                "BAAAB.....ABA.",
+                ".A....B..A..B.",
+                "B...B....B..A.",
+                "BA.B..A.ABA.A.",
+                "BAAAA.AAAAA.A.",
+                "B.B.B.BB.B...."
+        };
+
+        String res = new ABoardGame().whoWins(board);
+        System.out.println(res);
+    }
+}
+DynamicArray.java
+package com.samuelale.practice;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+/**
+ * https://www.hackerrank.com/challenges/dynamic-array
+ */
+public class DynamicArray {
+
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int N = s.nextInt();
+        int Q = s.nextInt();
+
+        Map<Integer, List<Integer>> seqList = new HashMap<>();
+        int lastAns = 0;
+
+        for(int q=0; q<Q; q++) {
+            int qType = s.nextInt();
+            int x = s.nextInt();
+            int y = s.nextInt();
+            int idx = (x ^ lastAns) % N;
+            seqList.putIfAbsent(idx, new ArrayList<>());
+            List<Integer> seq = seqList.get(idx);
+            if(qType == 1) {
+                seq.add(y);
+            } else {
+                lastAns = seq.get(y % seq.size());
+                System.out.println(lastAns);
+            }
+        }
+    }
+}
