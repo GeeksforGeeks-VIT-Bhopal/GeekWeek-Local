@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Chess</title>
+</head>
+<body>
+<div id="themes" class="theme-picker">
+    <div class="theme-picker__btn" id="btn">
+        <span class="theme-picker__btn__tag">Themes</span>
+    </div>
+    <div id="themes-list" class="theme-picker__list">
+        <div id="theme1" class="theme-picker__list__colors">
+            <div class="theme__color theme_color_1 color--border"></div>
+            <div class="theme__color theme_color_1 color--dark-box"></div>
+            <div class="theme__color theme_color_1 color--light-box"></div>
+        </div>
+        <div id="theme2" class="theme-picker__list__colors">
+            <div class="theme__color theme_color_2 color--border"></div>
+            <div class="theme__color theme_color_2 color--dark-box"></div>
+            <div class="theme__color theme_color_2 color--light-box"></div>
+        </div>
+        <div id="theme3" class="theme-picker__list__colors">
+            <div class="theme__color theme_color_3 color--border"></div>
+            <div class="theme__color theme_color_3 color--dark-box"></div>
+            <div class="theme__color theme_color_3 color--light-box"></div>
+        </div>
+        <div id="theme4" class="theme-picker__list__colors">
+            <div class="theme__color theme_color_4 color--border"></div>
+            <div class="theme__color theme_color_4 color--dark-box"></div>
+            <div class="theme__color theme_color_4 color--light-box"></div>
+        </div>
+        <div id="theme5" class="theme-picker__list__colors">
+            <div class="theme__color theme_color_5 color--border"></div>
+            <div class="theme__color theme_color_5 color--dark-box"></div>
+            <div class="theme__color theme_color_5 color--light-box"></div>
+        </div>
+    </div>
+</div>
+<div class="chessboard">
+    <div class="chessboard__row row ">
+        <div class="chessboard__row__item row--characters"></div>
+        <div class="chessboard__row__item row--characters"><span>A</span></div>
+        <div class="chessboard__row__item row--characters"><span>B</span></div>
+        <div class="chessboard__row__item row--characters"><span>C</span></div>
+        <div class="chessboard__row__item row--characters"><span>D</span></div>
+        <div class="chessboard__row__item row--characters"><span>E</span></div>
+        <div class="chessboard__row__item row--characters"><span>F</span></div>
+        <div class="chessboard__row__item row--characters"><span>G</span></div>
+        <div class="chessboard__row__item row--characters"><span>H</span></div>
+        <div class="chessboard__row__item row--characters"></div>
+    </div>
+    <div class="chessboard__row row--even">
+        <div class="chessboard__row__item row--characters "><span>1</span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light  row--chess-piece  icon-rook"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light  row--chess-piece icon-knight"></span>
+        </div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light  row--chess-piece icon-bishop"></span>
+        </div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light  row--chess-piece icon-queen"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light  row--chess-piece icon-king"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light  row--chess-piece icon-bishop"></span>
+        </div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light  row--chess-piece icon-knight"></span>
+        </div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light  row--chess-piece icon-rook"></span></div>
+        <div class="chessboard__row__item row--characters"><span>1</span></div>
+    </div>
+    <div class="chessboard__row row row--odd">
+        <div class="chessboard__row__item row--characters"><span>2</span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--light row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item row--characters"><span>2</span></div>
+    </div>
+    <div class="chessboard__row row row--even">
+        <div class="chessboard__row__item row--characters"><span>3</span></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item "></div>
+        <div class="chessboard__row__item row--characters"><span>3</span></div>
+    </div>
+    <div class="chessboard__row row row--odd">
+        <div class="chessboard__row__item row--characters"><span>4</span></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item "></div>
+        <div class="chessboard__row__item row--characters"><span>4</span></div>
+    </div>
+    <div class="chessboard__row row row--even">
+        <div class="chessboard__row__item row--characters"><span>5</span></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item "></div>
+        <div class="chessboard__row__item row--characters"><span>5</span></div>
+    </div>
+    <div class="chessboard__row row row--odd">
+        <div class="chessboard__row__item row--characters"><span>6</span></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item"></div>
+        <div class="chessboard__row__item "></div>
+        <div class="chessboard__row__item row--characters"><span>6</span></div>
+    </div>
+    <div class="chessboard__row row row--even">
+        <div class="chessboard__row__item row--characters"><span>7</span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark row--chess-piece icon-pown"></span></div>
+        <div class="chessboard__row__item row--characters"><span>7</span></div>
+    </div>
+    <div class="chessboard__row row row--odd">
+        <div class="chessboard__row__item row--characters"><span>8</span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark  row--chess-piece  icon-rook"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark  row--chess-piece icon-knight"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark  row--chess-piece icon-bishop"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark  row--chess-piece icon-queen"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark  row--chess-piece icon-king"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark  row--chess-piece icon-bishop"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark  row--chess-piece icon-knight"></span></div>
+        <div class="chessboard__row__item "><span class=" chess-piece--dark  row--chess-piece icon-rook"></span></div>
+        <div class="chessboard__row__item row--characters"><span>8</span></div>
+    </div>
+    <div class="chessboard__row row ">
+        <div class="chessboard__row__item row--characters"></div>
+        <div class="chessboard__row__item row--characters"><span>A</span></div>
+        <div class="chessboard__row__item row--characters"><span>B</span></div>
+        <div class="chessboard__row__item row--characters"><span>C</span></div>
+        <div class="chessboard__row__item row--characters"><span>D</span></div>
+        <div class="chessboard__row__item row--characters"><span>E</span></div>
+        <div class="chessboard__row__item row--characters"><span>F</span></div>
+        <div class="chessboard__row__item row--characters"><span>G</span></div>
+        <div class="chessboard__row__item row--characters"><span>H</span></div>
+        <div class="chessboard__row__item row--characters"></div>
+
+    </div>
+
+
+</div>
+<div id="box" class="box"></div>
+<script src="./js/script.js"></script>
+<script>
+    setTimeout(change, 1000);
+    moveThemes();
+</script>
+</body>
+</html>
