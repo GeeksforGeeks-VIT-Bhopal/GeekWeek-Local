@@ -1,0 +1,65 @@
+#include<iostream>
+using namespace std;
+class VIT{
+char Tcode[20];
+int adults,kids,kms;
+float fare;
+public:
+VIT()
+{
+//Tcode=NULL;
+adults=0;
+kids=0;
+kms=0;
+fare=0;
+}
+void assignfare();
+void entertour();
+void showtour();
+};
+void VIT::entertour()
+{
+cout<<"\nEnter Ticket code :";
+cin.getline(Tcode,20);
+cout<<"Adults :";
+cin>>adults;
+cout<<"Kids :";
+cin>>kids;
+cout<<"Travelling kilometers :";
+cin>>kms;
+assignfare();
+}
+void VIT::showtour()
+{
+cout<<"\nTicket Code :"<<Tcode<<endl;
+cout<<"Adults travelling :"<<adults<<endl;
+cout<<"Kids travelling :"<<kids<<endl;
+cout<<"Total kilometers :"<<kms<<endl;
+cout<<"Total Fare :"<<fare<<" Rupees.";
+}
+void VIT::assignfare()
+{
+int forkids;
+if(kms>=1000)
+fare=500*adults;
+else if(kms<1000 && kms>=500)
+fare=300*adults;
+else
+fare=200*adults;
+if(kids!=0)
+{
+if(kms>=1000)
+forkids=250*kids;
+else if(kms<1000 && kms>=500)
+forkids=150*kids;
+else
+forkids=100*kids;
+}
+fare=fare+forkids;
+}
+int main()
+{
+VIT v;
+v.entertour();
+v.showtour();
+}
