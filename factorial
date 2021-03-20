@@ -1,0 +1,18 @@
+include <iostream.h>
+using namespace std;
+
+int main()
+{
+    int x;
+    cout << "\n Enter a number";
+    cin >> x;
+    int fact = 1;
+    int count = 1;
+    //label
+find:
+    fact *= count;
+    count++;
+    if (count <= x)goto find;
+    cout << "\n Factorial of " << x << "\is" << fact;
+
+}
