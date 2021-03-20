@@ -1,0 +1,31 @@
+#Count elements of array
+ l1=list(map(int,input().split()))
+    l2=list(map(int,input().split()))
+    l2.sort()
+    for j in range(len(l1)):
+        for k in range(len(l2)):
+            if l2[k]>l1[j]:
+                if j == len(l1)-1:
+                    print(k)
+                else:
+                    print(k,end=',')
+                break
+            if k==len(l2)-1:
+                if j!=len(l1)-1:
+                    print(k+1,end=',')
+                else:
+                    print(k+1)
+                   
+                  
+                  
+#Minimum and Maximum array elements
+a = int(input())
+for i in range(a)\n = int(input())
+lst=[int(i) for i in input().split()]
+print(max(lst), end= '')
+print(min(lst))
+
+#Reverse an array
+arr = input()
+res = arr[::-1]
+print("reversed array is", res)
