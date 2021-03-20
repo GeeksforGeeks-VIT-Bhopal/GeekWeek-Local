@@ -1,0 +1,137 @@
+DSA 1
+from datetime import datetime as dt
+fmt = '%a %d %b %Y %H:%M:%S %z'
+for i in range(int(input())):
+    print(int(abs((dt.strptime(input(), fmt) - dt.strptime(input(), fmt)).total_seconds())))
+___________________________________________________________________________________________________________________________
+DSA 2
+def minion_game(string):
+    s, k = 0, 0
+    l = list(string)
+    x = len(l)
+    for w in l:
+        if w in "aeiouAEIOU":
+            k = k + x
+        else:
+            s = s + x
+        x = x - 1
+
+    if s > k:
+        print ('Stuart', s)
+    elif k > s:
+        print ('Kevin', k)
+    else:
+        print ('Draw')
+                
+if __name__ == '__main__':
+    s = input()
+    minion_game(s)
+____________________________________________________________________________________________________________________________
+DSA 3
+s = input()
+a = 1
+t = tuple()
+l = []
+for i in range(len(s)):    
+    if i == len(s)-1:
+        l.append((a,int(s[i])))
+        break
+    if s[i] == s[i+1]:
+        a += 1
+    else:
+        l.append((a,int(s[i])))
+        a = 1
+for j in l:
+    print(j, end = " ")
+____________________________________________________________________________________________________________________________
+DSA 4
+def merge_the_tools(S, N): 
+    for part in zip(*[iter(S)] * N):
+        d = dict()
+        print(''.join([ d.setdefault(c, c) for c in part if c not in d ]))
+
+if __name__ == '__main__':
+    string, k = input(), int(input())
+    merge_the_tools(string, k)
+ ____________________________________________________________________________________________________________________________
+ DSA 5
+ a, b = input().split()
+ar = input().split()
+x = set(input().split())
+y = set(input().split())
+print(sum([(i in x) - (i in y) for i in ar]))
+_____________________________________________________________________________________________________________________________
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Auto Response Form</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="brand">Auto Response Form</h1>
+    <div class="wrapper">
+      <div class="company-info">
+        <h3>Auto Response Form</h3>
+        <ul>
+          <li><i class="fa fa-road"></i> Bhopal, MP</li>
+          <li><i class="fa fa-phone"></i> (555) 555-5555</li>
+          <li><i class="fa fa-envelope"></i> itsksquaredev@gmail.com</li>
+        </ul>
+      </div>
+      <div class="contact">
+        <h3>Email Us</h3>
+        <div class="alert">Your message has been sent</div>
+        <form id="contactForm">
+          <p>
+            <label>Name</label>
+            <input type="text" name="name" id="name" required>
+          </p>
+          <p>
+            <label>Company</label>
+            <input type="text" name="company" id="company">
+          </p>
+          <p>
+            <label>Email Address</label>
+            <input type="email" name="email" id="email" required>
+          </p>
+          <p>
+            <label>Phone Number</label>
+            <input type="text" name="phone" id="phone">
+          </p>
+          <p class="full">
+            <label>Message</label>
+            <textarea name="message" rows="5" id="message"></textarea>
+          </p>
+          <p class="full">
+            <button type="submit">Submit</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
+__________________________________________________________________________________________________________________________________________________________________________
+VOICE ROBOT
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="Voice.js"></script>
+        <title>Speech Recognition</title>
+    </head>
+    <body>
+        <button id="btn" onclick='recognition.start()'>Record</button>
+        <h1 id="result"></h1>
+    </body>
+</html>
+____________________________________________________________________________________________________________________________________________________________________________
+
