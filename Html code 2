@@ -1,0 +1,40 @@
+{
+	box=sizing: border-box;
+}
+body{
+	margin: 0px;
+	background: powderblue;
+	font-fomily: sans-serif;
+}
+.container{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.login-box{
+	margin-top: 150px;
+	flex-basis: 400px;
+	background: pink;
+	padding: 20px;
+}
+.login-box h2{
+	border-bottom: 1px solid powderblue;
+	color: white;
+	text-align: center;
+	padding-bottom: 20px;
+	margin-top: 0 0 20px;
+}
+input, select{
+	width: 100%;
+	padding: 6px 5px;
+	margin: 8px 0;
+	border: 1px solid #ccc;
+}
+input[type=submit]{
+	background: #038ade;
+	border: none;
+	color: #fff;
+	text-decoration: none;
+	cursor: pointer;
+}
+
