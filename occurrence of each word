@@ -1,0 +1,83 @@
+/*
+    Time Complexity:O(N*(N+M)).
+    Space Complexity:O(M).
+
+    Where N is the length, and M is the number of unique words in the given string.
+
+*/
+
+import java.util.ArrayList;
+
+public class Solution {
+    public static void occurrenceOfEachWord(String s) {
+
+        // It is used to extract last word from string.
+        s += " ";
+
+        // It is used to store visited words from string
+        ArrayList<String> visited = new ArrayList<>();
+
+        // It is used to extract word from string
+        String word1 = "";
+
+        for (int i = 0; i < s.length(); i++) {
+
+            // If there is a space, it means a word is extracted from string.
+            if (s.charAt(i) == ' ') {
+
+                // If word1 is empty, we skip the iteration to avoid empty words in output
+                if (word1.equals("")) {
+                    continue;
+                }
+
+                // It is used to check if the word is already visited or not
+                boolean flag = false;
+                for (int j = 0; j < visited.size(); j++) {
+                    if (visited.get(j).equals(word1)) {
+
+                        flag = true;
+                        word1 = "";
+                        break;
+                    }
+                }
+
+                // If the word is already visited, then we skip the current iteration
+                if (flag) {
+                    continue;
+                }
+                // If the word is not visited, we insert it into visited list
+                else {
+                    visited.add(word1);
+                }
+
+                int count = 1;
+
+                // It is used to extract word from remaining string
+                String word2 = "";
+
+                for (int j = i + 1; j < s.length(); j++) {
+
+                    if (s.charAt(j) == ' ') {
+
+                        // If we found the word in the remaining string, we increment the count
+                        if (word1.equals(word2)) {
+                            count++;
+                        }
+
+                        word2 = "";
+                    } else {
+                        word2 += s.charAt(j);
+                    }
+                }
+
+                // We print the word1 along with it's occurrence
+                System.out.println(word1 + " " + count);
+
+                // As we will require to extract the next word so it is set to empty again
+                word1 = "";
+            } else {
+                word1 += s.charAt(i);
+            }
+        }
+    }
+}

@@ -1,0 +1,68 @@
+/*
+		Time Complexity: O(K! * K)
+		Space Complexity: O(K),
+
+		where K is the size of given string S.
+*/
+import java.util.HashSet;
+
+public class Solution {
+
+	// Helper function which will return minimum breaks required for substring of s
+	// from start to end index.
+	public static int helper(String s, int start, int end, HashSet<String> dictionary) {
+
+		// If the substring of s from index start to end is already present in the dictionary,
+		// we simply return 0, as we don't require to break any further.
+		if (dictionary.contains(s.substring(start, end + 1)) == true) {
+			return 0;
+		}
+
+		// If the current substring is of length 1, then there is no way to break it any more
+		// hence we will return some big integer denoting there is no way to break it any further.
+		if (start == end) {
+			return (int)1e9;
+		}
+
+		// Variable which will store the minimum number breaks required for string starting
+		// from index start till the end.
+		int minBreaks = (int)1e9;
+
+		// Trying all possible way to break current substring
+		for (int i = start; i < end; i++) {
+			// Trying to break string at index i which will break it into parts S(start, i) and S(i+1,end).
+			// Breaking at this point cost one breaking operation and we call this same function for those
+			// sub parts and keep track of the min possible breaks required.
+			minBreaks = Math.min(minBreaks, 1 + helper(s, start, i, dictionary) + helper(s, i + 1, end, dictionary));
+		}
+
+		// Returning the minimum possible break operation required in the substring of s from index start
+		// to end.
+		return minBreaks;
+	}
+
+	public static int stringBreaker(String s, int n, String[] dictionary) {
+
+		HashSet<String> dict = new HashSet<String>();
+
+		// Inserting words into 'dict', in order to check efficiently presence
+		// of some string in dictionary.
+		for (int i = 0; i < n; i++) {
+			dict.add(dictionary[i]);
+		}
+
+		// Calculating the minimum breaks required for the given string.
+		int minBreaks = helper(s, 0, s.length() - 1, dict);
+
+		// If minBreaks are found to be greater that or equals to 10^9
+		// this means it is impossible to break s in the required way.
+		// Hence assigning -1 to minBreak.
+		if (minBreaks >= (int)1e9) {
+			minBreaks = -1;
+		}
+
+		// Returning minBreaks required to break the given string s.
+		return minBreaks;
+	}
+
+}

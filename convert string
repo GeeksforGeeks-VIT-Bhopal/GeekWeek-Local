@@ -1,0 +1,27 @@
+/*
+	Time Complexity: O(N)
+	Space complexity: O(N)
+	
+	Where N is the length of the string.
+*/
+public class Solution {
+	public static String convertString(String str) {
+
+		StringBuilder sb = new StringBuilder(str);
+		
+		boolean flag = true;
+		for (int i = 0; i < sb.length(); i++) {
+			if (flag == true && Character.isLowerCase(sb.charAt(i))) {
+				sb.setCharAt(i, Character.toUpperCase(sb.charAt(i)));
+			}
+			if (Character.isSpaceChar(sb.charAt(i))) {
+				flag = true;
+			} else {
+				flag = false;
+			}
+		}
+
+		return sb.toString();
+	}
+}
+

@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int myAtoi(string str) {
+        str.append("junk");
+        stringstream ss;
+        ss<<str;
+        int x;
+        ss>>x;
+        return x;
+    }
+};
