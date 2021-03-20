@@ -1,0 +1,9 @@
+# Geek Week: Local
+# author: Devarakonda Anuhya
+# Day- 2
+S = str(input("Enter a few alphabets: ")
+i = ""
+if (i == "AB" or "BA") in S:
+        print("YES")
+else:
+        print("NO")
