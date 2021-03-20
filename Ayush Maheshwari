@@ -1,0 +1,120 @@
+//DSA 1
+//1. Generate Parenthesis (Language: Java)
+class Solution {
+    public List<String>generateParenthesis(int n) {
+ArrayList<String> result = new ArrayList<String>();
+dfs(result, "", n, n);
+    return result;
+    }
+    public void dfs(ArrayList<String> result, String s, int left, int right){
+if(left > right)
+            return;
+
+        if(left==0&&right==0){
+result.add(s);
+            return;
+        }
+
+        if(left>0){
+dfs(result, s+"(", left-1, right);
+        }
+
+        if(right>0){
+dfs(result, s+")", left, right-1);
+        }
+    }
+}
+
+//DSA 2
+//2. Permutations (Language: Python 3)
+class Solution:
+    def permute(self, num: List[int]) -> List[List[int]]:
+        if len(num)==0:
+            return []
+
+        r = []
+        s = []
+
+        def recursiveperm(list,final,temp):
+            l = len(list)
+
+            if l == 0:
+final.append(temp)
+                return
+
+            for i in range(l):
+nexttemp = temp[:]
+nexttemp.append(list[i])
+templist = list[:]
+templist.pop(i)
+recursiveperm(templist,final,nexttemp)
+
+recursiveperm(num,r,s)
+        return r
+//DSA 3
+//3. Integer to Roman (Language: Python 3)
+class Solution:
+    def intToRoman(self, number: int) -> str:
+num = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000]
+sym = ["I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"]
+        i = 12
+        l = []
+        while number:
+            div = number // num[i]
+            number %= num[i]
+
+            while div:
+l.append(sym[i])
+                div -= 1
+            i -= 1
+        return "".join(l)
+//DSA 4
+//4. Longest Substring Without Repeating Characters (Language: Python 3)
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+      i = 0
+      j = 0
+      d={}
+ans = 0
+      while j <len(s):
+         if s[j] not in d or i>d[s[j]]:
+ans = max(ans,(j-i+1))
+            d[s[j]] = j
+         else:
+            i = d[s[j]]+1
+ans = max(ans,(j-i+1))
+            j-=1
+         j+=1
+      return ans
+//DSA 5
+//5. Spiral Matrix (Language: Python 3)
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        if matrix == None or matrix == []:
+            return matrix
+        else:
+            m = len(matrix)
+            n = len(matrix[0])
+            k = 0
+            l = 0
+            s = []
+
+            while k < m and l < n:
+                for i in range(l, n):
+s.append(matrix[k][i])
+                k += 1
+
+                for i in range(k, m):
+s.append(matrix[i][n-1])
+                n-= 1
+
+                if k < m:
+                    for i in range(n-1, l-1, -1):
+s.append(matrix[m-1][i])
+                    m -= 1
+
+                if l < n:
+                    for i in range(m-1, k-1, -1):
+s.append(matrix[i][l])
+                    l += 1
+            return s

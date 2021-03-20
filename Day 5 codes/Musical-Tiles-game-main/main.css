@@ -1,0 +1,45 @@
+
+
+h1{
+  text-align: center;
+  
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3rem;
+  padding: 10% 15% ;
+  margin:  5%;
+  background-color: black;
+  color: #FEF2BF;
+
+}
+
+h3{
+    text-align: center;
+    color: #FEF2BF;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.btn{
+    
+   width: 150px;
+   height: 100px;
+   font-family: 'Press Start 2P', cursive;
+    margin: 25px;
+}
+
+#red {
+    background-color: red;
+  }
+  
+  #green {
+    background-color: green;
+  }
+  
+  #blue {
+    background-color: blue;
+  }
+  
+  #yellow {
+    background-color: yellow;
+  }
+
+
