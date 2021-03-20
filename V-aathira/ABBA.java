@@ -8,16 +8,7 @@ public class ABBA {
     private static final String FAIL = "Impossible";
     private static final String PASS = "Possible";
 
-//    private static String canObtain(String initial, String target) {
-//        if(initial.equals(target)) return PASS;
-//        else if(initial.length() == target.length()) return FAIL;
-//
-//        if(canObtain(initial+"A", target).equals(PASS)) return PASS;
-//        if(canObtain(reverse(initial) + "B", target).equals(PASS)) return PASS;
-//
-//        return FAIL;
-//    }
-
+    
     private static String canObtain(String initial, String target) {
         int len = target.length();
         Set<String> temp = new HashSet<>();
