@@ -1,0 +1,45 @@
+Given 3 Strings, check whether the 3rd string contains all the characters of string 1 and 2 in any order. If all the characters are present, print "YES" otherwise print "NO".
+There should not be any extra character and any missing character.
+The string s contains uppercase Latin letters only.
+#coding Ninja
+
+
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+int Substring(string s, string s1, string s2)
+{
+	string a=s+s1;
+    int M = a.length();
+    int N = s2.length();
+    for (int i = 0; i <= N - M; i++) {
+        int j;
+        for (j = 0; j < M; j++)
+            if (s2[i + j] != s1[j])
+                break;
+ 
+        if (j == M)
+            return i;
+    }
+ 
+    return -1;
+}
+int main()
+{
+    string s;
+    string s1;
+    string s2;
+    cout<<"enter the first sting"<<endl;
+    cin>>s;
+    cout<<"enter the second string"<<endl;
+    cin>>s1;
+    cout<<"enter the third string"<<endl;
+    cin>>s2;
+    int res = Substring(s, s1, s2);
+    if (res == -1)
+        cout << "NO";
+    else
+        cout << "YES";
+    return 0;
+}
+
