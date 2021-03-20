@@ -1,0 +1,11 @@
+class Solution:
+    #Complete the below function
+    def search(self,arr, N, X):
+        #Your code here
+        i=0
+        while(i<N):
+            if (arr[i]==X):
+                return i
+            i=i+1
+        return -1
+        #Driver code starts
