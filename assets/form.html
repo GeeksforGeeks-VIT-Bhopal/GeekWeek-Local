@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forms</title>
+</head>
+
+<body>
+    <h2>Basic form in HTML</h2>
+    <form action="backend.php">
+        <div>
+            <label for="name">Name:</label>
+
+            <input type="text" name="myName" id="name">
+        </div>
+
+        <!--br is not recommended for spacing and padding as we will use css-->
+        <br>
+        <!-- div is a block element it takes the width of entire one block-->
+        <div>
+            <label for="role">Role:</label>
+            <input type="text" name="myRole" id="role">
+        </div>
+        <br>
+        <div>
+            <label for="email"> Email:</label>
+            <input type="email" name="myEmail" id="email">
+        </div>
+        <br>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" name="myPassword" id="password">
+        </div>
+
+        <br>
+        <div>
+            <label for="date">Date:</label>
+            <input type="date" name="myDate" id="date">
+        </div>
+        <br>
+        <div>
+            Bonus: <input type="number" name="myBonus">
+        </div>
+        <br>
+        <div>
+            Are you elegible? : <input type="checkbox" name="myEligibility" checked>
+        </div>
+        <br>
+        <div>
+            Gender: Male<input type="radio" name="myGender"> Female<input type="radio" name="myGender"> Other<input
+                type="radio" name="myGender">
+        </div>
+        <br>
+        <!--rows= length of text area ;columns=width of text area-->
+        <div>
+            Write about Yourself: <br><textarea name="myText" cols="30" rows="10"></textarea>
+        </div>
+        <br>
+        <div>
+            <label for="car">Car:</label>
+            <select name="myCar" id="car">
+                <option value="ind">Indica</option>
+                <option value="sw" selected>Swift</option>
+                <option value="nex">Nexa</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Submit Now">
+        </div>
+        <br>
+        <div>
+            <input type="reset" value="Reset Now">
+        </div>
+    </form>
+</body>
+
+</html>
