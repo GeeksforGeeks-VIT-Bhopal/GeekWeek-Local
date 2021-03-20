@@ -1,0 +1,33 @@
+int getSum(int a[], int n) {
+    // Your code goes here
+    int sum = 0;
+    for(int i = 0; i<n;i++){
+        sum+=a[i];
+    }
+    return sum;
+    
+}   
+
+int findElementAtIndex(int a[], int n, int key) 
+{
+    // Your code goes here
+     for(int i = 0;i<n;i++){
+         if (i==key){
+             return a[i];
+         }
+     }
+}
+
+int largest(int arr[], int n) {
+    int i;
+
+    // Initialize maximum element
+    int max = arr[0];
+
+    // Traverse array elements from second and
+    // compare every element with current max
+    for (i = 1; i < n; i++)
+        if (arr[i] > max) max = arr[i];
+
+    return max;
+}
