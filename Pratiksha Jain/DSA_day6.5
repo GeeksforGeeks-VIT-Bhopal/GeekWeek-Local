@@ -1,0 +1,25 @@
+Node* InsertNth(Node *head, int data, int position)
+{
+    Node newNode = (Node)malloc(sizeof(Node));
+    newNode->data = data;
+
+    if (head == NULL) {
+        return newNode;
+    }
+
+    if (position == 0) {
+       newNode->next = head;
+       return newNode;
+    }
+
+    Node *currentNode = head;
+    while (position - 1 > 0) {
+        currentNode = currentNode->next;
+        position--;
+    }
+
+    newNode->next = currentNode->next;
+    currentNode->next = newNode;
+
+    return head;
+ }
