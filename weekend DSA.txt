@@ -1,0 +1,111 @@
+DSA PROBLEMS weekend 
+HACKERRANK - python
+---------------------------------------------------------------------------------------------------
+
+# DSA - 1 : write a function
+
+def is_leap(year):
+    leap = False
+ 
+    not_leap = [1800,1900,2100,2200,2300]
+    
+    if year%4 == 0 and year not in not_leap:
+        leap = True
+    
+    if year%100 == 0:
+        if year%400 ==0:
+            leap = True
+        else:
+            leap = False 
+    # Write your logic here
+    
+    return leap
+
+year = int(input())
+
+---------------------------------------------------------------------------------------------------
+
+# DSA -2 : Compess the string
+
+import itertools as it
+print(' '.join(('({}, {})'.format(len(list(g)), x) for x,g in it.groupby(input()))))
+
+---------------------------------------------------------------------------------------------------
+
+# DSA - 3 : find degrees in angle
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import math
+AB,BC=int(input()),int(input())
+hype=math.hypot(AB,BC)                     
+res=round(math.degrees(math.acos(BC/hype)))
+degree=chr(176)                              
+print(res,degree, sep='')
+
+---------------------------------------------------------------------------------------------------
+
+#DSA - 4: palindromes
+
+for i in range(0,int(input())): 
+    print([1, 121, 12321, 1234321, 123454321, 12345654321, 1234567654321, 123456787654321, 12345678987654321, 12345678910987654321][i])
+
+---------------------------------------------------------------------------------------------------
+
+#DSA - 5 : 
+
+a = int(input())
+b = int(input())
+print(a//b)
+print(a%b)
+print(divmod(a,b))
+
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
