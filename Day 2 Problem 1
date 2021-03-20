@@ -1,0 +1,43 @@
+A word or a sentence is called a pangram if it contains all the letters of the English alphabet.
+You are given a string s consisting of lowercase and uppercase Latin letters. Check whether this string is a pangram. Print "YES" or "NO".
+We say that the string contains a letter of the Latin alphabet if this letter occurs in the string in either uppercase or in lowercase.
+#coding Ninja
+
+
+#include <iostream>
+#include <bits/stdc++.h> 
+using namespace std; 
+bool check(string str, int n) 
+{ 
+    vector<bool> s(26, false); 
+    int ind; 
+    for (int i = 0; i < n; i++) { 
+        if ('A' <= str[i] && str[i] <= 'Z') 
+            ind = str[i] - 'A'; 
+        else if ('a' <= str[i] 
+                 && str[i] <= 'z') 
+            ind = str[i] - 'a'; 
+        else
+            continue; 
+  
+        s[ind] = true; 
+    } 
+    for (int i = 0; i <= 25; i++) 
+        if (s[i] == false) 
+            return (false); 
+    return (true); 
+} 
+int main() 
+{ string str;int n;
+   cout<<"enter the length of the stringt"<<endl;
+   cin>>n;
+   cout<<"enter the string"<<endl;
+   cin>>str;
+  
+    if (check(str,n) == true) 
+        cout<<"Yes"; 
+    else
+        cout<<"No"; 
+  
+    return (0); 
+}
