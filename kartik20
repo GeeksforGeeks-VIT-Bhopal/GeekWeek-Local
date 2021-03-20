@@ -1,0 +1,14 @@
+#Finding out sum of 'n' numbers
+list=[]
+num=int(input("Enter number of elements:"))
+for i in range(1,num+1):
+    b=int(input("Enter element:"))
+    list.append(b)
+
+sum=0
+
+for num in list:
+    sum = sum +num
+print ("sum of list element is : ", sum)
+
+
