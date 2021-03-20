@@ -1,0 +1,71 @@
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class DyanmicArray {
+
+     static List<ArrayList<Integer>> list = new ArrayList<ArrayList<Integer>>(); 
+    
+    static int lastListIndex=-1,noOfLists,noOfQueries,lastans=0;
+    
+    public static void main(String[] args) {
+        
+        Scanner scanner = new Scanner(System.in);
+        
+        noOfLists = scanner.nextInt();
+        
+        noOfQueries = scanner.nextInt();
+        
+        for(int i=0;i<noOfLists;i++)
+            list.add(new ArrayList<Integer>());
+        
+        for(int i=0;i<noOfQueries;i++){
+            int temp = scanner.nextInt();
+            int x,y;
+            x = scanner.nextInt();
+            y = scanner.nextInt();
+            if(temp == 1){
+                
+                insert(x,y);
+            }
+            else{
+                
+                print(x,y);
+            }
+        }
+        
+    }
+    
+    static void print(int x,int y){
+        if(noOfLists != 0){
+            List<Integer> temp = list.get((x^lastans) % noOfLists);
+        int size = temp.size();
+        if(!temp.isEmpty()){
+            lastans = list.get((x^lastans) % noOfLists).get(y%size);
+        
+        System.out.println(lastans);
+        }
+        }
+    }
+    
+    static void insert(int x,int y){
+        
+        int index;
+        index = (x^lastans)%noOfLists;
+        
+            list.get(index).add(y);
+            
+            lastListIndex++;
+        
+        
+        
+        
+    }
+    
+}
+
+
+
+
+
