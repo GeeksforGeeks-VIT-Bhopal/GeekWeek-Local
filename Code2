@@ -1,0 +1,6 @@
+#Minimum and maximum number in array
+
+import array as ar
+a=ar.array('i',[1,8,3,9,4,5,6])
+print("Maximum number in array is: ", max(a))
+print("Minimum number in array is: ", min(a))
