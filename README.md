@@ -39,7 +39,7 @@ And now you can add all other files inside your **username**'s folder
 
 ![](assets/banner3(1).png)
 
-## **Step1:** Goto **Geek Week: Local** repo in your profile and click on **Pull request** as shown in the image below
+## **Step1:** Goto **Geek Week: Local** repo in your profile and click on **Pull request** as shown in the image below.
 
 ![](assets/pr-step1.png)
 
