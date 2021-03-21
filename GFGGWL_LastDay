@@ -1,0 +1,48 @@
+# CODEFORCES: Beautiful Matrix
+
+i1, j1, m = 0, 0, 0
+
+a = []
+for i in range(5):
+    a.append(input())
+    a[i] = a[i].split(' ')
+
+    for j in range(5):
+        a[i][j] = int(a[i][j])
+
+        if a[i][j] == 1:
+            (i1, j1) = (i, j)
+
+while i1 != 2 or j1 != 2:
+    if i1 < 2:
+        a[i1][j1] = 0
+        a[i1+1][j1] = 1
+        i1 += 1
+        m += 1
+
+    elif i1 > 2:
+        a[i1][j1] = 0
+        a[i1-1][j1] = 1
+        i1 -= 1
+        m += 1
+
+    if j1 < 2:
+        a[i1][j1] = 0
+        a[i1][j1+1] = 1
+        j1 += 1
+        m += 1
+
+    elif j1 > 2:
+        a[i1][j1] = 0
+        a[i1][j1-1] = 1
+        j1 -= 1
+        m += 1
+
+print('\n' + str(m) + '\n')
+
+for i in range(5):
+    for j in range(5):
+        if j < 4:
+            print(a[i][j], end=' ')
+        else:
+            print(a[i][j])
