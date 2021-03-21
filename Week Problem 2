@@ -1,0 +1,36 @@
+int lengthOfLongestSubArr(string &s)
+{
+    int ans = 0;
+
+    //Iterate through 's'.
+    for (int i = 0; i < s.length(); i++)
+    {
+        //  Iterate through 's' again but from 'i'.
+        for (int j = i; j < s.length(); j++)
+        {
+            //  Variables to store the count of boys and girls in a particular subarray.
+            int boys = 0, girls = 0;
+
+            //  Iterate through the subarray.
+            for (int k = i; k <= j; k++)
+            {
+                if (s[k] == 'B')
+                {
+                    boys = boys + 1;
+                }
+                else
+                {
+                    girls = girls + 1;
+                }
+            }
+
+            //  Check boys and girls are equal in this subarray then store the maximum between previous answer and the length of this subarray.
+            if (boys == girls)
+            {
+                ans = max(ans, boys + girls);
+            }
+        }
+    }
+
+    //  Return the answer.
+    return ans;}
