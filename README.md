@@ -7,8 +7,7 @@ Geek Week: Local is a week-long hackathon of creating hacks, solving problems, a
 ## What are these Challenges?
 Geek Week: Local will run from 14/03/21 to 21/03/21.
 
-During this time, you can expect challenges for all skill levels. These challenges can be completed on your own time, and new ones will be released each day on our website! Once the daily challenges are announced, you’ll have 24 hours to complete and submit them in order to
-earn those points on the leader-board.
+During this time, you can expect challenges for all skill levels. These challenges can be completed on your own time, and new ones will be released each day on our website! Once the daily challenges are announced, you’ll have 24 hours to complete and submit them in order to earn those points on the leader-board.
 
 If the daily challenges aren’t quite your speed, there will also be plenty of week-long challenges you can complete at any time. These will range from quick technical challenges to tasks you can complete with your guild-mates (guild=team), both beginner-friendly and technically advanced so there is something for everyone.
 
