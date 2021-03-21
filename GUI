@@ -1,0 +1,339 @@
+Window 1:
+1.X Button-
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+System.exit(0);        
+ }  
+2.Clear Button-
+private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+user.setText("");
+pass.setText(""); 
+    }   
+3.Login Button-
+private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+String username=user.getText();
+String password=pass.getText();
+if(username.contains("davina")&&password.contains("Claire")){
+                JOptionPane.showMessageDialog(null,"Login Successful!");
+                welcome field= new welcome();
+                field.setVisible(true);
+                setVisible(false);
+            }
+            else
+                JOptionPane.showMessageDialog(null,"Login Failed");
+    }     
+                 
+                                                
+                                                
+
+
+Wnidow2:
+1.Logout Button
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+ipproject field= new ipproject();
+                field.setVisible(true);
+                setVisible(false);        
+    }     
+2.New Booking Button
+private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+booking field= new booking();
+                field.setVisible(true);
+                setVisible(false);        
+    }              
+3.View Button
+private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+view field= new view();
+                field.setVisible(true);
+              setVisible(false);  
+           }
+                                   
+
+Window3:
+1.Combobox1
+               
+private void c1ActionPerformed(java.awt.event.ActionEvent evt) {                                   
+ int a=c1.getSelectedIndex();
+ price.setText("");
+switch (a)
+{case 1:
+    try{
+    Class.forName("java.sql.Driver");
+    Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/subhash","root","Subhash");
+    Statement stmt=conn.createStatement();
+    String query= "Select * from flight where Source='Hyderabad';";
+    ResultSet rs = stmt.executeQuery(query);
+    DefaultTableModel model=(DefaultTableModel)t1.getModel();
+    model.setRowCount(0);
+    while (rs.next()){
+        String FlightNo=rs.getString("FlightNo");
+        String Source=rs.getString("Source");
+        String Destination=rs.getString("Destination");
+String DepartAt=rs.getString("DepartAt");
+String ArriveAt=rs.getString("ArriveAt");
+Object[] row={FlightNo,Source,Destination,DepartAt,ArriveAt};
+model.addRow(row);
+    }
+    stmt.close();
+    conn.close();
+}       catch (Exception ex) {
+            Logger.getLogger(booking.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    break;
+    case 2:
+    try{
+    Class.forName("java.sql.Driver");
+    Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/subhash","root","Subhash");
+    Statement stmt=conn.createStatement();
+    String query= "Select * from flight2 where Source='Delhi';";
+    ResultSet rs = stmt.executeQuery(query);
+    DefaultTableModel model=(DefaultTableModel)t1.getModel();
+    model.setRowCount(0);
+    while (rs.next()){
+        String FlightNo=rs.getString("FlightNo");
+        String Source=rs.getString("Source");
+        String Destination=rs.getString("Destination");
+String DepartAt=rs.getString("DepartAt");
+String ArriveAt=rs.getString("ArriveAt");
+Object[] row={FlightNo,Source,Destination,DepartAt,ArriveAt};
+model.addRow(row);
+    }
+    stmt.close();
+    conn.close();
+}       catch (Exception ex) {
+            Logger.getLogger(booking.class.getName()).log(Level.SEVERE, null, ex);
+        }
+break;
+case 3:
+    try{
+    Class.forName("java.sql.Driver");
+    Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/subhash","root","Subhash");
+    Statement stmt=conn.createStatement();
+    String query= "Select * from flight3 where Source='Mumbai';";
+    ResultSet rs = stmt.executeQuery(query);
+    DefaultTableModel model=(DefaultTableModel)t1.getModel();
+    model.setRowCount(0);
+    while (rs.next()){
+        String FlightNo=rs.getString("FlightNo");
+        String Source=rs.getString("Source");
+        String Destination=rs.getString("Destination");
+String DepartAt=rs.getString("DepartAt");
+String ArriveAt=rs.getString("ArriveAt");
+Object[] row={FlightNo,Source,Destination,DepartAt,ArriveAt};
+model.addRow(row);
+    }
+    stmt.close();
+    conn.close();
+}       catch (Exception ex) {
+            Logger.getLogger(booking.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    break;
+    case 4:
+    try{
+    Class.forName("java.sql.Driver");
+    Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/subhash","root","Subhash");
+    Statement stmt=conn.createStatement();
+    String query= "Select * from flight4 where Source='Bangalore';";
+    ResultSet rs = stmt.executeQuery(query);
+    DefaultTableModel model=(DefaultTableModel)t1.getModel();
+    model.setRowCount(0);
+    while (rs.next()){
+        String FlightNo=rs.getString("FlightNo");
+        String Source=rs.getString("Source");
+        String Destination=rs.getString("Destination");
+String DepartAt=rs.getString("DepartAt");
+String ArriveAt=rs.getString("ArriveAt");
+Object[] row={FlightNo,Source,Destination,DepartAt,ArriveAt};
+model.addRow(row);
+    }
+    stmt.close();
+    conn.close();
+}       catch (Exception ex) {
+            Logger.getLogger(booking.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    break;
+    case 5:
+    try{
+    Class.forName("java.sql.Driver");
+    Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/subhash","root","Subhash");
+    Statement stmt=conn.createStatement();
+    String query= "Select * from flight5 where Source='Chennai';";
+    ResultSet rs = stmt.executeQuery(query);
+    DefaultTableModel model=(DefaultTableModel)t1.getModel();
+    model.setRowCount(0);
+    while (rs.next()){
+        String FlightNo=rs.getString("FlightNo");
+        String Source=rs.getString("Source");
+        String Destination=rs.getString("Destination");
+String DepartAt=rs.getString("DepartAt");
+String ArriveAt=rs.getString("ArriveAt");
+Object[] row={FlightNo,Source,Destination,DepartAt,ArriveAt};
+model.addRow(row);
+    }
+    stmt.close();
+    conn.close();
+}       catch (Exception ex) {
+            Logger.getLogger(booking.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    break;}   
+   }       
+
+2.Table
+                
+private void t1MouseClicked(java.awt.event.MouseEvent evt) {                                
+DefaultTableModel model = (DefaultTableModel) t1.getModel();
+        JTable source = (JTable)evt.getSource();
+            int row = source.rowAtPoint( evt.getPoint() );
+switch (row)
+{
+ case 0:
+     price.setText("2000");
+     break; 
+ case 1:
+     price.setText("4000");
+    break;
+ case 2:
+     price.setText("2500");
+     break;
+ case 3:
+     price.setText("3000");
+     break; 
+ case 4:
+     price.setText("3500");
+     break; 
+     case 5:
+     price.setText("2800");
+     break; 
+     case 6:
+     price.setText("4200");
+     break; 
+     case 7:
+     price.setText("5000");
+     break; 
+    }
+    }     
+3.ComboBox2
+             
+  private void c2ActionPerformed(java.awt.event.ActionEvent evt) {                                   
+int a=c2.getSelectedIndex();
+int b=Integer.parseInt(price.getText());
+total.setText("");
+switch (a)
+{
+ case 0:
+     total.setText(Integer.toString(1*b));
+     break; 
+ case 1:
+     total.setText(Integer.toString(2*b));
+    break;
+ case 2:
+     total.setText(Integer.toString(3*b));
+     break;
+ case 3:
+     total.setText(Integer.toString(4*b));
+     break; 
+ case 4:
+     total.setText(Integer.toString(5*b));
+     break;} 
+    }    
+4.Book Your Flight Button
+             
+private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+try{
+    
+    Class.forName("java.sql.Driver");
+    Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/subhash","root","Subhash");
+    Statement stmt=conn.createStatement();
+    String query= "insert into final values("+selectedFlightNo+",'"+selectedSource+"','"+selectedDestination+"','"+selectedDepartAt+"','"+selectedArriveAt+"',"+total.getText()+");";
+    System.out.println(query);
+    stmt.executeUpdate(query);
+    stmt.close();
+    conn.close();
+}       catch (Exception ex) {
+            Logger.getLogger(booking.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(null,"Your Tickets Have Been Successfully Booked");
+        thankyou field= new thankyou();
+                field.setVisible(true);
+                setVisible(false);   
+    }       
+
+
+
+
+
+
+
+Window 4:
+1.Logout Button
+                                      
+  private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+ipproject field= new ipproject();
+                field.setVisible(true);
+                setVisible(false);        
+    }        
+
+
+
+
+
+2.Submit Button
+                     
+private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+JOptionPane.showMessageDialog(null,"Will Take Your Suggestions Into Consideration") ;
+ipproject field= new ipproject();
+                field.setVisible(true);
+                setVisible(false);
+    }                                        
+Window 5:
+1.Done Button
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+welcome field= new welcome();
+                field.setVisible(true);
+                setVisible(false);        
+    }                                                
+2.View
+                                    
+  private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+try{
+    Class.forName("java.sql.Driver");
+    Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/subhash","root","Subhash");
+    Statement stmt=conn.createStatement();
+    String query= "Select * from final;";
+    ResultSet rs = stmt.executeQuery(query);
+    DefaultTableModel model=(DefaultTableModel)t1.getModel();
+    model.setRowCount(0);
+    while (rs.next()){
+        String FlightNo=rs.getString("FlightNo");
+        String Source=rs.getString("Source");
+        String Destination=rs.getString("Destination");
+String DepartAt=rs.getString("DepartAt");
+String ArriveAt=rs.getString("ArriveAt");
+String TotalPrice=rs.getString("TotalPrice");
+Object[] row={FlightNo,Source,Destination,DepartAt,ArriveAt,TotalPrice};
+model.addRow(row);
+    }
+    stmt.close();
+    conn.close();
+}       catch (Exception ex) {
+            Logger.getLogger(booking.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+delete.setEnabled(true);
+    }                                        
+3. Delete Booking:
+                                   
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {                                       
+
+try{
+    Class.forName("java.sql.Driver");
+    Connection conn=DriverManager.getConnection("jdbc:mysql://localhost/subhash","root","Subhash");
+    Statement stmt=conn.createStatement();
+    int row=t1.getSelectedRow();
+String cell=t1.getModel().getValueAt(row,0).toString();
+String query="DELETE FROM final where FlightNo="+cell;
+    int rs = stmt.executeUpdate(query);
+    
+    stmt.close();
+    conn.close();
+}       catch (Exception ex) {
+            Logger.getLogger(booking.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    } 
