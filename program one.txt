@@ -1,0 +1,232 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+
+using namespace std;
+
+
+class abc
+{
+    public:
+    void add (int x, int y)
+    {
+        int z=x+y;
+        cout<<"add is         "<<z;
+    }
+    int sub(int a, int b)
+    {
+        int c=a-b;
+        return c;
+    }
+    int mul(int a, int b)
+    {
+        int d=a*b;
+        return d;
+    }
+    int devide(int a, int b)
+    {
+        int e=a/b;
+        return e;
+    }
+};
+
+    main()
+    {
+        abc ob; //object 
+        ob.add(10,20);
+        int sub = ob.sub(20,10);
+        cout<<"\n sub is"<<sub;
+        int mul = ob.mul(10,5);
+        cout<<"\n mul is"<<mul;
+        int devide = ob.devide(10,2);
+        cout<<"\n devide is"<<devide;
+        
+    }
