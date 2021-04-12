@@ -32,7 +32,7 @@ If the daily challenges aren’t quite your speed, there will also be plenty of 
 
 ![](assets/step5.png)
 
-And now you can add all other files inside your **username**'s folder
+And now you can add all other files inside your **username**'s folder.
 
 ---
 
