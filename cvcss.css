@@ -1,0 +1,114 @@
+body {
+background-color: #ffcdd2a8;
+  margin: 0;
+  font-family: 'Arial';
+  font-size: 16px;
+  line-height: 1.8em;
+}
+
+a {
+  color: #c2185b;
+}
+
+
+
+article {
+  padding:0 1.5em;
+}
+
+section{
+  margin: 1.5em;
+  padding: 1.5em;
+}
+
+header, main{
+  margin: 0 auto;
+}
+
+header {
+  background-position: fixed;
+  background-size: cover;  
+padding: 2em;
+  text-align: center;
+
+  
+  color: #010000;
+}
+
+header section {
+  margin: 0 auto;
+  max-width: 640px;
+}
+
+header img {
+  max-width: 100px;
+  border-radius: 50%;
+}
+
+h1 {  margin: 1em 0;
+  text-transform: uppercase;
+}
+
+h3 {  text-transform: uppercase;}
+
+h3, h4 {
+  font-weight: bold;
+}
+
+.course .description {
+  max-width: 66.6%;
+ padding-left: 1em;
+}
+.course .title {
+max-width: 33%;
+  color: #c2185b;
+  
+}
+.school {
+  text-transform: capitalize;
+}
+
+.school span {
+text-decoration: underline;
+  color: #e91e63;
+  
+}
+
+main {
+  max-width: 1120px;
+}
+
+main section:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+
+.skills .column ul{
+ max-width: 50%;
+  list-style-type: none;
+}
+
+.skills .column ul > li:before {
+  content: "•";
+
+  color: #c2185b;
+}
+@media only screen and (max-width: 768px) {
+  .course {
+    display: block;
+  }
+
+  .course .title, .course .description {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .skills {
+    display: block;
+  }
+
+  .skills .column {
+    max-width: 100%;
+  }
+
+}
