@@ -1,0 +1,175 @@
+//CODE 1
+/*
+
+	Time complexity: O(N^2) 
+	Space complexity: O(1)
+	
+	where ‘N’ is the length of the given string ‘s’.
+
+
+*/
+
+bool checkUnique(string &s)
+{
+    //  Iterate through the given string 's'.
+    for (int i = 0; i < s.length(); i++)
+    {
+        //  Again, Iterate through the given string.
+        for (int j = i + 1; j < s.length(); j++)
+        {
+            //  If, found same character at different indexed then return false.
+            if (s[i] == s[j])
+            {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+
+//CODE 2
+
+/*
+    Time Complexity: O(N*M). 
+    Space Complexity: O(N*M).
+    
+    Where N is the length of the string a and M is the length of string b.
+*/
+
+#include <vector>
+#include <string>
+
+bool isInterleave(string a, string b, string c)
+{
+
+	int n1 = a.length(), n2 = b.length(), n3 = c.length();
+
+	//Create a dp array of size (n1+1)*(n2+1) and initialise it to false.
+	vector<vector<bool>> dp(n1 + 1, vector<bool>(n2 + 1, false));
+
+	//If the length of c is not equal to the sum of the length of a and b, then return false.
+	if (n1 + n2 != n3)
+	{
+		return false;
+	}
+	int i, j;
+
+	for (i = 0; i <= n1; i++)
+	{
+		for (j = 0; j <= n2; j++)
+		{
+
+			//If both i and j are 0, then simply asnwer is true.
+			if (i == 0 && j == 0)
+			{
+				dp[i][j] = true;
+			}
+
+			//If the value of i is zero, then dp[i][j] becomes true, if dp[i][j-1] is true and the (j-1) character of b matches with (j-1) character of c.
+			else if (i == 0)
+			{
+				dp[i][j] = dp[i][j - 1] && (b[j - 1] == c[j - 1]);
+			}
+
+			//If j is 0, then dp[i][j] becomes true, if dp[i-1][j] is true and the (i-1) character of a matches with (j-1) character of c.
+			else if (j == 0)
+			{
+				dp[i][j] = dp[i - 1][j] && (a[i - 1] == c[i - 1]);
+			}
+
+			//Check for both the cases.
+			else
+			{
+				dp[i][j] = (dp[i - 1][j] && a[i - 1] == c[i + j - 1]) || (dp[i][j - 1] && b[j - 1] == c[i + j - 1]);
+			}
+		}
+	}
+
+	return dp[n1][n2];
+}
+
+//CODE3
+
+int distinctStrings(vector<string> &arr, int n)
+{
+    //  Counter variable to store the number of distinct strings.
+    int count = 0;
+
+    //  Iterate through the given set.
+    for (int i = 0; i < n; i = i + 1)
+    {
+        //  Create two vectors to store frequencies of characters at even or odd indexes.
+        vector<int> even1(26, 0), odd1(26, 0);
+
+        //  Iterate through the string.
+        for (int j = 0; j < arr[i].length(); j = j + 1)
+        {
+            //  For odd index, increment frequency in odd1 vector.
+            if (j & 1)
+            {
+                odd1[arr[i][j] - 'a'] = odd1[arr[i][j] - 'a'] + 1;
+            }
+
+            //  For even index, increment frequency in even1 vector.
+            else
+            {
+                even1[arr[i][j] - 'a'] = even1[arr[i][j] - 'a'] + 1;
+            }
+        }
+
+        int h;
+
+        //  Again, increment through the set.
+        for (h = i + 1; h < n; h = h + 1)
+        {
+            //  Create two vectors to store frequencies of characters at even or odd indexes.
+            vector<int> even2(26, 0), odd2(26, 0);
+
+            for (int j = 0; j < arr[h].length(); j = j + 1)
+            {
+                if (j & 1)
+                {
+                    odd2[arr[h][j] - 'a'] = odd2[arr[h][j] - 'a'] + 1;
+                }
+                else
+                {
+                    even2[arr[h][j] - 'a'] = even2[arr[h][j] - 'a'] + 1;
+                }
+            }
+
+            int k;
+
+            //  Check, If both vectors are equal or not.
+            for (k = 0; k < 26; k = k + 1)
+            {
+                if (even1[k] != even2[k] || odd1[k] != odd2[k])
+                {
+                    break;
+                }
+            }
+
+            if (k == 26)
+            {
+                break;
+            }
+        }
+
+        //  Increment counter if string at 'i' is not equivalent to any other string.
+        if (h == n)
+        {
+            count = count + 1;
+        }
+    }
+
+    return count;
+}
+
+
+
+
+
+
+
+
