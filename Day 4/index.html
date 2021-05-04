@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://kit.fontawesome.com/b0d4caeadc.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock paper scissors</title>
+    <style media="screen">
+        body {
+          margin: 1rem;
+          box-sizing: border-box;
+          overflow: hidden;
+        }
+    
+        .container {
+          background: #3f3f44;
+          font-family: cursive;
+          font-size: 1.3rem;
+          height: 920px
+        }
+    
+        .heading {
+          color: #ffe75e;
+          text-align: center;
+          font-style: italic;
+          font-family: cursive;
+          padding: 2rem 0;
+        }
+    
+        .game-scr {
+          display: flex;
+          justify-content: space-around;
+        }
+    
+        .rps-icn {
+          display: flex;
+          justify-content: center;
+          height: 8rem;
+        }
+        
+        .rps-icn a {
+          border: 5px #ffd31d solid;
+          border-radius: 5rem;
+          padding: 1rem 2rem 0 2rem;
+          color: #ffd31d;
+          margin-left: 3rem;
+        }
+    
+        .rps-icn a:hover {
+          color: red;
+          background: #b6eb7a;
+          border: 5px #b6eb7a solid;
+        }
+    
+        .player-head,
+        .comp-header {
+          text-align: center;
+          text-decoration: overline underline;
+        }
+    
+        #pimggif,
+        #cimggif,
+        .rockCircle,
+        .paperCircle,
+        .scissorsCircle {
+          border-radius: 15rem;
+          width: 450px;
+          height: 450px;
+          padding: 2rem 0;
+        }
+    
+        #result-player,
+        #result-comp {
+          font-family: cursive;
+          font-size: 4rem;
+          margin: 0 12.8rem;
+          text-decoration: overline underline;
+        }
+    
+        .devName a {
+          text-decoration: underline;
+          color: #ffd31d;
+        }
+    
+        #loading-scr {
+          padding-left: 2rem;
+        }
+    
+        #comp-loading-scr {
+          padding-right: 2rem;
+        }
+      </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="heading"><b><span style="text-decoration: line-through">ROCK</span>
+        <span style="text-decoration: line-through">PAPER</span>
+        <span style="text-decoration: line-through">SCISSORS</span></b><br>
+      <span class="devName">By: Team elecTRON</span></h1>
+    <div class="game-scr">
+      <div class="player">
+        <h1 class="player-head" style="color:#b6eb7a"><b>PLAYER</b></h1>
+        <span id="result-player" style="color:#b6eb7a"></span>
+        <div id="loading-scr"></div>
+      </div>
+      <div class="rps-icn">
+        <a onclick="rpsLogic(this)" class="rock"><i class="fas fa-hand-rock fa-4x"></i></a>
+        <a onclick="rpsLogic(this)" class="paper"><i class="fas fa-hand-paper fa-4x"></i></a>
+        <a onclick="rpsLogic(this)" class="scissors"><i class="fas fa-hand-scissors fa-4x"></i></a>
+      </div>
+      <div class="computer">
+        <h1 class="comp-header" style="color:red"><b>COMPUTER</b></h1>
+        <span id="result-comp" style="color:red"></span>
+        <div id="comp-loading-scr"></div>
+      </div>
+    </div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
