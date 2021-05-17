@@ -1,0 +1,74 @@
+#include<bits/stdc++.h>
+#include <windows.h>
+using namespace std;
+
+int main()
+
+{
+
+unordered_map<string, int> notes = {
+    {"a", 440},
+    {"a#", 466},
+    {"b", 493},
+    {"c", 523},
+    {"c#", 554},
+    {"d", 587},
+    {"d#", 622},
+    {"e", 659},
+    {"f", 698},
+    {"f#", 739},
+    {"g", 783},
+    {"g#", 830},
+    {"a5", 880},
+};
+string note;
+long long int duration;
+
+vector<pair<string, int>> octave = {
+    
+    {"a", 400},
+    {"b", 400},
+    {"c", 400},
+    {"d", 400},
+    {"e", 400},
+    {"f", 400},
+    {"g", 400},
+    {"a5", 400},
+};
+
+vector<pair<string, int>> SnoopDogg =
+{
+    
+    {"d#", 600},
+    {"a5", 600},
+    {"a5", 300},
+    {"g#", 300},
+    {"a5", 600},
+    {"g#", 300},
+    {"f#", 300},
+    {"g#", 600},
+    {"g#", 300},
+    {"f#", 300},
+    {"d#", 300},
+    {"f#", 300},
+};
+
+ 
+ while (true)
+ {
+cout<<"Input note: ";
+ cin >> note;
+ if(note == "x")
+    break;
+Beep(notes[note], 750);
+        
+ 
+ }
+for(int k=0; k<2; k++){
+for(auto i: SnoopDogg)
+{
+    Beep(notes[i.first], i.second);
+}}
+return 0;
+
+}
