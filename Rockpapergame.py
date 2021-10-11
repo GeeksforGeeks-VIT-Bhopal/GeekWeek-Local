@@ -17,6 +17,6 @@ elif computer_choice=="paper" and user_choice=="scissor":
 elif computer_choice=="scissor" and user_choice=="paper":
     print("you lost boomer!!!")
 elif computer_choice=="scissor" and user_choice=="rock":
-    print("You won(Fuck off now)")
+    print("You won(i gave up)")
 else:
     print("you lost(HAHAHAHAHAHAHAHAHA)")
