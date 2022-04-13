@@ -1,0 +1,21 @@
+2.	public String find(String word)
+	{
+		int len=word.length();
+		for(char i='A';i<='Z';i++){
+				for(char j='A';j<='Z';j++){
+					String xyxy=Character.toString(i)+Character.toString(j)+Character.toString(i)+Character.toString(j);
+						boolean flag=possible(word,xyxy);
+						if(flag==true){
+							return "Dislikes";
+
+						}
+				}
+	}
+	for(int i=0;i<len-1;i++){
+
+		if(word.charAt(i)==word.charAt(i+1)){
+			return  "Dislikes";
+		}	
+	}
+	return "Likes";
+}

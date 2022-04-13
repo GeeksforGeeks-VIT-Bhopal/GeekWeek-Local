@@ -1,0 +1,28 @@
+package tc1;
+
+import java.util.*;
+import java.util.regex.*;
+import java.text.*;
+import java.math.*;
+import java.awt.geom.*;
+
+public class LongWordsDiv2
+{
+	public  boolean possible(String x,String y){// word and xyxy
+		int len1=x.length();
+		int len2=y.length();
+		int j=0;
+		//int match=0;
+		for(int i=0;i<len1 && j<len2;i++){
+			if(x.charAt(i)==y.charAt(j)){
+				j++;
+				//match++;
+			}
+		}
+		if(j==len2){
+			return true;
+		}
+		return false;
+		
+	}
+		
