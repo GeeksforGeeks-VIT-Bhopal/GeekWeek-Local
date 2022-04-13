@@ -1,0 +1,16 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    int a,b,c,sum=0;
+    cout<<"Enter three numbers: ";
+    cin>>a>>b>>c;
+    sum=a+b+c;
+    cout<<"Sum of numbers: "<<sum; 
+    return 0;
+}
