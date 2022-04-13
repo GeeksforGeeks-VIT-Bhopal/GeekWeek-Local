@@ -1,0 +1,4 @@
+main(List<String> args) {
+  String name = "hello world";
+  print(name);
+}
