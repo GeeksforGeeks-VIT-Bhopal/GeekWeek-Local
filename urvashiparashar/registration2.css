@@ -1,0 +1,96 @@
+
+body{
+     
+    background-size: 100%   ;
+    background-image: url("image3.jpg");
+}
+div.main
+{
+    width: 500px;
+    margin: 100px  auto 90px auto;
+    border: solid 2px black ;
+    
+    background-color: white;
+}
+h2{
+    text-align: center;
+    padding: 20px;
+    
+}
+form{
+    text-align: center;
+    margin-bottom: 34px;
+    height: 385px;
+    background-color: white;
+    
+    
+}
+div.register
+{
+    background-color: white;
+  
+    width: 100%;
+    background-size: 100px;
+}
+.button {
+    
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: black;
+    color: rgb(26, 23, 23);
+    background-color: #0ec0d8;
+    border: slategray;
+    border-radius: 10px;
+    box-shadow: 0 3px #999;
+  }
+  
+  .button:hover {background-color: #e70eb8}
+  
+  .button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
+  }
+  .toggle-btn
+{
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    transition: .5s;
+    align-content: center;
+    box-shadow: 0 0 20px 9px #1312121f;
+    border-radius: 30px;
+    background: linear-gradient(to right,#ff105f,#ffad06);
+}
+.input-field
+{
+    width: 50%;
+    
+   
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+}
+.submit-btn
+{
+    width: 50%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin-top: 20px;
+    background: linear-gradient(to right,#ff105f,#ffad06);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    box-shadow: 0 3px rgb(8, 8, 8);
+    transition: .10s;
+    
+    
+}
+

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Registration form</title>
+        <link rel="stylesheet" href="registration.css">
+        
+
+        
+    </head>
+    <body>
+        <div class="main">
+            <div class="register">
+                <br><br>
+               
+                <center><button type="button" class="toggle-btn">
+                    <center>CONTACT US</center> </button> </center>
+                <br><br>
+                <form id="register" method="post" action="">
+                    <label for="f1name">First Name:</label>
+                    &nbsp;&nbsp;
+                    <input type="text" class="input-field" placeholder="Enter your First name "
+                    name="f2name" id="f3name" required>
+                    <br><br>
+                    <label for="l1name">Last Name:</label>
+                    &nbsp;&nbsp;
+                    <input type="text" class="input-field" placeholder="Enter your last name"
+                    name="l2name" id="l3name" required>
+                    <br><br>
+                    <label for="e1name">Email id:</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="email" class="input-field" placeholder="Enter your email "
+                    name="e2name" id="e3name" required>
+                    <br><br>
+                    <label for="p1name">Phone No.:</label>
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="phone" class="input-field" placeholder="Enter your Phone No."
+                    name="p2name" id="p3name" required>
+                    <br><br>
+                    <label for="d1name">Date of birth:</label>
+                    
+                    <input type="date" 
+                    name="d2name" id="d3name" class="input-field" required>
+                    <br><br>
+                    <label for="explain_problem">Type your problem here:</label>
+                    <br>
+                    <textarea name="problem" id="tproblem" cols="50" rows="7" required></textarea>
+                    <br><br>
+                    <center>
+                    <button type="submit" class="submit-btn" onclick="myfunc()">SUBMIT</button></center>
+                    
+                    <!--<nav class="navbar navbar-light bg-light ">
+                        <div class="container-fluid">
+                          <form class="d-flex">
+                            
+                            <button class="btn btn-outline-success" type="submit">SUBMIT</button>
+                          </form>
+                        </div>
+                      </nav>-->
+                      <script>
+                        function myfunc() {
+                            if(document.getElementById('f3name').value && 
+                        document.getElementById('l3name').value && document.getElementById('e3name').value &&
+                        document.getElementById('p3name').value && document.getElementById('d3name')  
+                        && document.getElementById('tproblem').value)
+                      confirm("You have registered successfully!!");
+                      else
+                      confirm("Please fill all the fields..");
+                        }
+                        </script>
+
+
+
+
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
