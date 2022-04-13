@@ -1,0 +1,4 @@
+Go to terminal of your ide say vs code or pycharm
+run these two commands to install needed packages:
+1) pip install selenium
+2) pip install webdriver_manager
