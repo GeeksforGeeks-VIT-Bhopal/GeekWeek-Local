@@ -1,0 +1,38 @@
+//Program to add 2 numbers from leet code
+
+class Solution 
+{
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) 
+    {
+        ListNode* head = new ListNode();
+        ListNode* current = head;
+        
+        int addition = 0;
+        int val;
+        while( l1 != nullptr || l2 != nullptr )
+        {
+            if ( l1 == nullptr ) { val = l2->val + addition; }
+            else if ( l2 == nullptr ) { val = l1->val + addition; }
+            else { val = l1->val + l2->val + addition; }
+            addition = val / 10;
+            if (val > 9) { val -= 10; }
+            
+			
+            current->next = new ListNode(val);
+            current = current->next;
+            
+		
+            if ( l1 != nullptr) { l1 = l1->next; }
+            if ( l2 != nullptr) { l2 = l2->next; }
+        }
+        
+		
+        if(addition > 0)
+        {
+            current->next = new ListNode(addition);
+        }
+        
+        return head->next;
+    }
+};
