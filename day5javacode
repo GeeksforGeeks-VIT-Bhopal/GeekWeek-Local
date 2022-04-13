@@ -1,0 +1,147 @@
+public class ANewHope {
+
+    /*
+     * The strategy will be to create a new week and try to swap shirt values to
+     * look more like the last week until the conditions are met, or we until
+     * we can no longer move shirts around without violating the conditions.
+     */
+    public int count(int[] firstWeek, int[] lastWeek, int D) {
+        int N = firstWeek.length;
+
+        boolean same = true;
+        for(int i=0; i<N; i++) same &= firstWeek[i] == lastWeek[i];
+        if(same) return 1;
+
+        int gap = N-D;
+
+
+        return gap;
+    }
+
+    public static void main(String[] args) {
+        ANewHope hope = new ANewHope();
+        System.out.println(hope.count(new int[]{1,2,3,4}, new int[]{4,3,2,1}, 3));
+    }
+}
+package com.samuelale.practice;
+
+import java.util.HashSet;
+import java.util.Scanner;
+
+
+public class AlgSearchPairs {
+
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int N = s.nextInt();
+        int K = s.nextInt();
+        HashSet<Integer> valSet = new HashSet<>();
+        for (int i=0; i<N; i++) {
+            valSet.add(s.nextInt());
+        }
+
+        HashSet<Integer> modSet = new HashSet<>(valSet);
+        int pairs = 0;
+        for(int val : valSet) {
+            if(modSet.contains(val+K) || modSet.contains(val-K)) {
+                pairs++;
+            }
+            modSet.remove(val);
+        }
+        System.out.print(pairs);
+    }
+}
+package com.samuelale.practice;
+
+import java.util.;
+
+
+public class CutTheTree {
+
+    private static class Node {
+        int value;
+        int total;
+        List<Node> edges;
+
+        Node(int val) {
+            this.value = val;
+            total = 0;
+            edges = new ArrayList<>();
+        }
+
+        @Override
+        public String toString() {
+            return "Val: " + value + " | Total: " + total; //+ " | Edges: " + edges.toString();
+        }
+    }
+
+    private static HashSet<Node> visited = new HashSet<>();
+
+    private static void findTotal(Node n) {
+        visited.add(n);
+        if(n.edges.isEmpty()) {
+            n.total = n.value;
+        } else {
+            int total = n.value;
+            for(Node edge : n.edges) {
+                if(visited.contains(edge)) continue;
+                visited.add(edge);
+                findTotal(edge);
+                total+=edge.total;
+            }
+            n.total = total;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int N = input.nextInt();
+
+        Node[] nodeArr = new Node[N];
+        for(int i=0; i<N; i++) {
+            nodeArr[i] = new Node(input.nextInt());
+        }
+
+        for(int i=0; i<N-1; i++) {
+            int n1 = input.nextInt()-1;
+            int n2 = input.nextInt()-1;
+            nodeArr[n1].edges.add(nodeArr[n2]);
+            nodeArr[n2].edges.add(nodeArr[n1]);
+        }
+
+        // calculate the totals at each node
+        findTotal(nodeArr[0]);
+
+        int minDiff = Integer.MAX_VALUE;
+        for(int i=1; i<N; i++) {
+            int diff = Math.abs(nodeArr[0].total - nodeArr[i].total2);
+            if(diff < minDiff) {
+                minDiff = diff;
+            }
+        }
+        System.out.print(minDiff);
+    }
+}
+package com.samuelale.practice;
+import java.math.BigInteger;
+import java.util.Scanner;
+
+
+public class FibonacciMod {
+
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        BigInteger t1 = s.nextBigInteger();
+        BigInteger t2 = s.nextBigInteger();
+        BigInteger n = s.nextBigInteger();
+
+        BigInteger ti = new BigInteger("0");
+        for(int i=3; i<=n.intValue(); i++) {
+            ti = t1.add(t2.pow(2));
+            t1 = t2;
+            t2 = ti;
+        }
+        System.out.println(ti);
+    }
+
+}
