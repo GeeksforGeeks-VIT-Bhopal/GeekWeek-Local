@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int row,col,i=0,j=0,x;
+	int A[10][10],B[10][10],C[10][10];
+	cout<<"Enter the number of rows :";
+	cin>>row;
+	cout<<"Enter the number of columns :";
+	cin>>col;
+	cout<<"Enter the elements of 1st matrix :"<<endl;
+	for(i=0;i<row;i++)
+		{for(j=0;j<col;j++)
+			cin>>A[i][j];
+		}
+	cout<<"Enter the elements of 2nd matrix :"<<endl;	
+	for(i=0;i<row;i++)
+		{for(j=0;j<col;j++)
+			cin>>B[i][j];
+		}
+	cout<<"Matrix A :"<<endl;	
+	for(i=0;i<row;i++)
+		{for(j=0;j<col;j++)
+			cout<<A[i][j]<<" ";
+		cout<<endl;
+		}
+	cout<<"Matrix B :"<<endl;	
+	for(i=0;i<row;i++)
+		{for(j=0;j<col;j++)
+			cout<<B[i][j]<<" ";
+		cout<<endl;
+		}
+	cout<<"1.Subtraction"<<endl;
+	cout<<"2.Addition"<<endl;
+	cout<<"3.Multiplication"<<endl;	
+	cout<<"Select The Operation :";
+	cin>>x;
+	if(x==1)
+	{for(i=0;i<row;i++)
+		{for(j=0;j<col;j++)
+					C[i][j] = A[i][j]-B[i][j];
+		}
+		
+		for(i=0;i<row;i++)
+		{for(j=0;j<col;j++)
+				cout<<C[i][j]<<" ";
+			cout<<endl;}}
+	else if(x==2)
+	{for(i=0;i<row;i++)
+		{for(j=0;j<col;j++)
+					C[i][j] = A[i][j]+B[i][j];
+		}
+		
+		for(i=0;i<row;i++)
+		{for(j=0;j<col;j++)
+				cout<<C[i][j]<<" ";
+			cout<<endl;}}
+	else if(x==3)
+	{
+		for(i=0;i<row;i++)
+			for(j=0;j<col;j++)
+			{
+				C[i][j]=0;
+				for(int k=0;k<row;k++)
+					C[i][j]+=A[i][k]*B[k][j];
+			}
+		for(i=0;i<row;i++)
+		{for(j=0;j<col;j++)
+				cout<<C[i][j]<<" ";
+			    cout<<endl;}
+	}	
+			
+			
+return 0;				 		
+}
