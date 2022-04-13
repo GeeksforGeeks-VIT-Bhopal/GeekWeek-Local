@@ -1,0 +1,54 @@
+#include <climits>
+#include <algorithm>
+
+int minCostToBuyOrangesHelper(int idx, int requiredWeight, int cost[], int n)
+{
+    //  Base Case
+    if (requiredWeight == 0)
+        return 0;
+
+    //  If we reached the end of cost[] but some weight is still left to cover
+    if (idx == n)
+        return INT_MAX;
+
+    //  If weight of 'idx' packet is greater than requried weight
+    if (idx + 1 > requiredWeight)
+        return INT_MAX;
+
+    //  Initializing
+    int aheadCost, finalCost = INT_MAX;
+
+    if (cost[idx] == -1)
+    {
+        //  If packet of this weight is not available
+        finalCost = minCostToBuyOrangesHelper(idx + 1, requiredWeight, cost, n);
+    }
+    else
+    {
+        // Option of taking this packet
+        aheadCost = minCostToBuyOrangesHelper(idx, requiredWeight - (idx + 1), cost, n);
+        if (aheadCost != INT_MAX)
+        {
+            finalCost = cost[idx] + aheadCost;
+        }
+
+        //  Option of skiping this packet
+        aheadCost = minCostToBuyOrangesHelper(idx + 1, requiredWeight, cost, n);
+        finalCost = min(finalCost, aheadCost);
+    }
+
+    return finalCost;
+}
+
+
+int minCostToBuyOranges(int cost[], int n, int w)
+{
+    int minCost = minCostToBuyOrangesHelper(0, w, cost, n);
+
+    //  If it's not possible to buy exactly W kg oranges
+    if (minCost == INT_MAX)
+    {
+        return -1;
+    }
+    return minCost;
+}
