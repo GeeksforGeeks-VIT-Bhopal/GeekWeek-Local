@@ -1,0 +1,14 @@
+
+class gg
+{
+    public static void main()
+    {
+        int a=5,b=6;
+        int i;
+        for(i=0;i<10;i++)
+        {
+            int s=a+b;
+            System.out.println("Result"+s);
+        }
+    }
+}
