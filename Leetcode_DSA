@@ -1,0 +1,135 @@
+class Solution {
+public:
+ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+int sum=0;
+ListNode *l3=NULL;
+ListNode **node=&l3;
+while(l1!=NULL||l2!=NULL||sum>0)
+{
+if(l1!=NULL)
+{
+sum+=l1->val;
+l1=l1->next;
+}
+if(l2!=NULL)
+{
+sum+=l2->val;
+l2=l2->next;
+}
+(*node)=new ListNode(sum%10);
+sum/=10;
+node=&((*node)->next);
+}
+return l3;
+}
+};
+.................................................................................................
+class Solution {
+public:
+int lengthOfLongestSubstring(string s) {
+if(s.length() == 0) return 0;
+int map[256] = {0};
+int n = s.length();
+int start = 0;
+int max_len = INT_MIN;
+for(int i=0;i<n;++i){
+map[s[i]]++;
+if(map[s[i]] > 1){
+max_len = max(max_len, (i - start));
+while(s[start] != s[i]){
+map[s[start]]--;
+start++;
+}
+map[s[start]]--;
+start++;
+}
+}
+max_len = max(max_len, (n - start));
+if(start == 0) return n;
+else return max_len;
+}
+};
+...............................................................................................
+class Solution {
+public:
+string longestPalindrome(string s) {
+int len = s.length();
+vector<vector<bool>> mem(len, vector<bool>(len, false));
+int best_start = 0;
+int best_len = 1;
+for(int i = 0; i<len; i++) mem[i][i]=true;
+for(int l = 2; l<=len; l++)
+for(int start = 0; start<=len-l; start++)
+{
+int end = start+l-1;
+if ((s[start]==s[end]) && (l==2 ||mem[start+1][end-1]))
+{
+mem[start][end] = true;
+best_start=start;
+best_len=l;
+}
+}
+return s.substr(best_start,best_len);
+}
+};
+............................................................................................
+class Solution {
+public:
+int myAtoi(string str) {
+int i = 0;
+int sign = 1;
+int result = 0;
+if (str.length() == 0) return 0;
+
+
+
+//Discard whitespaces in the beginning
+while (i < str.length() && str[i] == ' ')
+i++;
+
+
+
+// Check if optional sign if it exists
+if (i < str.length() && (str[i] == '+' || str[i] == '-'))
+sign = (str[i++] == '-') ? -1 : 1;
+
+
+
+// Build the result and check for overflow/underflow condition
+while (i < str.length() && str[i] >= '0' && str[i] <= '9') {
+if (result > INT_MAX / 10 ||
+(result == INT_MAX / 10 && str[i] - '0' > INT_MAX % 10)) {
+return (sign == 1) ? INT_MAX : INT_MIN;
+}
+result = result * 10 + (str[i++] - '0');
+}
+return result * sign;
+}
+};
+
+.................................................................................................................
+class Solution {
+public:
+ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+int sum=0;
+ListNode *l3=NULL;
+ListNode **node=&l3;
+while(l1!=NULL||l2!=NULL||sum>0)
+{
+if(l1!=NULL)
+{
+sum+=l1->val;
+l1=l1->next;
+}
+if(l2!=NULL)
+{
+sum+=l2->val;
+l2=l2->next;
+}
+(*node)=new ListNode(sum%10);
+sum/=10;
+node=&((*node)->next);
+}
+return l3;
+}
+};
