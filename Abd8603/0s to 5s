@@ -1,0 +1,23 @@
+def convert0to5rec(num):
+ 
+    # Base case for recurssion termination
+    if num == 0:
+        return 0
+ 
+    # Extract the last digit and change it if needed
+    digit = num % 10
+ 
+    if digit == 0:
+        digit = 5
+ 
+    # Convert remaining digits and append the last digit
+    return convert0to5rec(num / 10) * 10 + digit
+ 
+# It handles 0 to 5 calls convert0to5rec()
+# for other numbers
+def convertFive(num):
+    if num == 0:
+        return 5
+    else:
+        return convert0to5rec(num)
+        #Driver starts

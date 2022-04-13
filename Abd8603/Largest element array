@@ -1,0 +1,7 @@
+def largest( arr, n):
+    maxNum = arr[0]         #maximum element initialized
+    for i in range(1, n):   #Traverse through the array to find the largest element
+        if arr[i] > maxNum: 
+            maxNum = arr[i] 
+    return maxNum
+    Driver code starts

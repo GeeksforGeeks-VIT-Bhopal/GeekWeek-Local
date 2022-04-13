@@ -1,0 +1,80 @@
+mport sys
+
+def findMinSubstringContainingString(large, small) :
+    if len(large) == 0 :
+        return None
+    
+    hashMap = dict()
+    
+    for i in range(len(small)) :
+        if small[i] in hashMap :
+            hashMap[small[i]] = 1 + hashMap[small[i]]
+        else:
+            hashMap[small[i]] = 1
+
+
+    answerStart = 0
+    answerEnd = -1
+    answerLength = sys.maxsize
+    
+    currentSubStringStart = 0
+    currentSubStringEnd = 0
+    
+    numRemainingChar = len(hashMap)
+
+    while currentSubStringEnd < len(large) :
+        curentChar = large[currentSubStringEnd]
+        
+        currentCharFreq = -sys.maxsize-1
+        
+        if curentChar in hashMap :
+            currentCharFreq = hashMap[curentChar]
+            
+        if currentCharFreq == -sys.maxsize-1 :
+            currentSubStringEnd += 1
+        else :
+            hashMap[curentChar] = currentCharFreq - 1
+            if currentCharFreq == 1 :
+                numRemainingChar -= 1
+    
+            if numRemainingChar == 0 :
+                while currentSubStringStart <= currentSubStringEnd :
+                    ch = large[currentSubStringStart]
+                    
+                    freq = -sys.maxsize-1
+                    
+                    if ch in hashMap :
+                        freq = hashMap[ch]
+                    
+    
+                    if freq == -sys.maxsize-1 :
+                        currentSubStringStart += 1
+                    elif freq < 0 :
+                        currentSubStringStart += 1
+                        hashMap[ch] = freq + 1
+                    else :
+                        currentSubstringLength = currentSubStringEnd - currentSubStringStart + 1
+                        
+                        if currentSubstringLength < answerLength :
+                            answerStart = currentSubStringStart
+                            answerEnd = currentSubStringEnd
+                            answerLength = currentSubstringLength
+            
+                        break
+
+
+
+            currentSubStringEnd += 1
+
+
+    if answerLength == sys.maxsize :
+        return ""
+    else :
+        return large[answerStart : answerEnd + 1]
+        
+#main
+large = input().strip()
+small = input().strip()
+
+val = findMinSubstringContainingString(large, small)
+print(val)
