@@ -1,0 +1,47 @@
+Class OPP
+{
+public:
+
+ void Tata(int a)/// function 1
+{
+cout<<"\nvalue of a is " <<a;
+}
+void Tata(float a)/// function 2
+{
+cout<<"\nvalue of a is " <<a;
+}
+void Tata(int a, int b)/// function 3
+{
+cout<<"\nvalue of a is " <<a;
+cout<<"\n value of b is" <<b;
+}
+};
+int main()
+{
+OOP obj;
+obj.Tata(23);
+obj.Tata(5.6);
+obj.Tata(2, 3);
+return 0;
+
+}
+__________________________________________________________________________________________________________________________________________________________________________
+
+using namespace std;
+ 
+void print(int i) {
+  cout << " Here is int " << i << endl;
+}
+void print(double  f) {
+  cout << " Here is float " << f << endl;
+}
+void print(char const *c) {
+  cout << " Here is char* " << c << endl;
+}
+ 
+int main() {
+  print(10);
+  print(10.10);
+  print("ten");
+  return 0;
+}
