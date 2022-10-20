@@ -4,5 +4,6 @@ at VIT Bhopal University!
 Registration No. - 20BAI10188
 
 # What do I like?
-> Coding! Learning interesting/New stuff! Anime! Gaming!
+> Coding! Learning interesting/New stuff! 
+> Into Anime and Gaming!
 And much yet to discover ;)
