@@ -50,4 +50,3 @@ And now you can add all other files inside your **username**'s folder
 ## **Step3:** Now, just write a title and a description of what this Pull request is for. Then click on **Create pull request**
 
 ![](assets/pr-step3.png)
-
