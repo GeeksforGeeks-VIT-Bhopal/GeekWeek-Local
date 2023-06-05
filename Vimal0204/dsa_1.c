@@ -2,6 +2,7 @@
 #include <stdlib.h>
 int main()
 {
+//     code start from here
     int num, *arr, i;
     scanf("%d", &num);
     arr = (int*) malloc(num * sizeof(int));
