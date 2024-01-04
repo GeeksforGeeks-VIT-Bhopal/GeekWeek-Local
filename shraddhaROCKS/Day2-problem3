@@ -1,0 +1,62 @@
+/*
+        Time Complexity: O(N^2)
+        Space Complexity: O(N^2)
+
+        O(N^2), where N is the number of coordinates.
+
+*/
+
+
+#include<unordered_map>
+
+int maxPointsOnLine(vector<vector<int>> &points, int n) {
+	
+	// Base cases.
+	if (n == 0){
+		return 0;
+	}
+
+	if (n <= 2){
+		return n;
+	}
+
+	int ans = 0;
+	for (int i = 0; i < n; i++) {
+		
+		unordered_map<long double, int>mp;
+		int samePoint = 0, sameX = 1;
+		for (int j = 0; j < n; j++) {
+			if (i == j){
+				continue;
+			}
+
+			// Checking if the points are overlapping.
+			if (points[j][0] == points[i][0] && points[j][1] == points[i][1]){
+				samePoint++;
+			}
+
+			// Checking if the points have same X coordinates.
+			if (points[j][0] == points[i][0]) {
+				sameX++;
+				continue;
+			}
+
+			// Finding the slope of the line
+			long double k = (long double) (points[j][1] - points[i][1]) / (long double) (points[j][0] - points[i][0]);
+			if (mp.count(k) == 0){
+				mp[k] = 2;
+			}
+
+			else{
+				mp[k]++;
+			}
+		}
+
+		// Iterating over the map and finding maximum.
+		for (auto x : mp) {
+			ans = max(ans, x.second + samePoint);
+		}
+		ans = max(ans, sameX);
+	}
+	return ans;
+}
